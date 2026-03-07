@@ -8,19 +8,30 @@ import org.openqa.selenium.support.events.EventFiringDecorator;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class TestBase {
     protected WebDriver driver;
+    // Убедись, что переменная объявлена на уровне класса
     protected String baseUrl;
 
     @BeforeEach
     public void setUp() throws IOException {
         Properties props = new Properties();
-        FileInputStream fis = new FileInputStream("src/main/resources/config.properties");
-        props.load(fis);
-        baseUrl = props.getProperty("baseUrl"); // это наш сайт на основе localhost:3000
+        // Используем ClassLoader, чтобы точно найти файл
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("config.properties")) {
+            if (is == null) {
+                throw new RuntimeException("Файл config.properties не найден!");
+            }
+            props.load(is);
+        }
 
+        // ключ именно "baseUrl" (регистр важен!)
+        this.baseUrl = props.getProperty("baseUrl");
+        if (baseUrl == null || baseUrl.isEmpty()) {
+            baseUrl = "http://localhost:3000";
+        }
 
         WebDriver originalDriver = new ChromeDriver();
         MyListener listener = new MyListener();
@@ -28,7 +39,8 @@ public class TestBase {
 
         this.driver.manage().window().maximize();
 
-        // 3. Используем считанный URL
+
+        System.out.println("Перехожу по адресу: " + baseUrl); //
         this.driver.get(baseUrl);
     }
 

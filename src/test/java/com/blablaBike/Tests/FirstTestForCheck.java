@@ -19,9 +19,9 @@ public class FirstTestForCheck extends TestBase {
                 .as("Главный баннер должен быть отображен")
                 .isTrue();
 
-        // Проверяем текст (игнорируя эмодзи велосипеда, если нужно)
+
         assertThat(homePage.getBannerText())
-                .as("Текст баннера должен содержать название бренда")
+                .as("Текст баннера отображется")
                 .contains("BlablaBike");
     }
 

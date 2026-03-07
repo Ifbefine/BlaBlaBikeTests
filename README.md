@@ -1,56 +1,49 @@
-﻿# BlaBlaBike Automation Project
+﻿# 🚲 BlaBlaBike Automation Project
 
-Проект по аренде велосипедов для школьной практики. Сервис для поиска, выбора и быстрого бронирования велосипедов.
+**BlaBlaBike** — сервис для поиска, выбора и быстрого бронирования велосипедов (школьная практика).
 
-👥 Наша Команда
-Developers (5): Dumitru Gangan, Vladyslav Kravchenko, Dmitrii Evdokimov, 
-Kateryna Matvieieva, Stepan Serbin
+---
 
+### 👥 Команда проекта
 
-QA (4): Dariia Boiko, Daryna Suk, Vladimir Dinu, Hanna Kozlianska
+| Роль | Участники |
+| :--- | :--- |
+| **Developers** | Dumitru Gangan, Vladyslav Kravchenko, Dmitrii Evdokimov, Kateryna Matvieieva, Stepan Serbin |
+| **QA Engineers** | Dariia Boiko, Daryna Suk, Vladimir Dinu, Hanna Kozlianska |
 
+---
 
-                     🛠 Стек технологий (Tech Stack) 🛠
-Язык программирования: Java 21 
+### 🛠 Стек технологий (Tech Stack)
 
-Сборщик проекта: Maven 
+* **Core:** Java 21 + Maven
+* **UI:** Selenium WebDriver + WebDriverManager
+* **API:** Rest-Assured
+* **DB:** PostgreSQL (JDBC)
+* **Testing:** JUnit 5 + AssertJ
+* **Logging:** Custom EventFiringDecorator (MyListener)
 
-UI Автоматизация: Selenium WebDriver 
+---
 
- WebDriverManager 
+### 📏 Правила разработки (Best Practices)
 
-API Тестирование: Rest-Assured 
+1.  **DRY & Clean Code:** Все общие действия (клики, ожидания) инкапсулированы в `BasePage`.
+2.  **Explicit Waits:** Только динамические ожидания `WebDriverWait`. Никаких `Thread.sleep()`.
+3.  **Fluent Interface:** Реализация цепочек действий (Chain of Pages) для читаемости тестов.
+4.  **Git Flow:** Разработка функционала и тестов ведется в отдельных ветках.
 
- PostgreSQL Driver (JDBC)
+---
 
-Тестовый движок: JUnit 5 
+### 📂 Структура проекта
 
-Библиотека ассертов: AssertJ 
+* `src/main/java/core` — Ядро фреймворка (BasePage, конфигурации, слушатели).
+* `src/test/java/pages` — Page Object Repository (локаторы и бизнес-логика).
+* `src/test/java/tests` — Автоматизированные тест-кейсы.
 
+---
 
-## 📏 Правила разработки (Best Practices)
+### 🚀 Быстрый запуск
 
-1. **DRY (Don't Repeat Yourself):** Все общие действия (клик, ввод текста, ожидания) вынесены в `BasePage`.
-2. **Explicit Waits:** Мы не используем `Thread.sleep()`. Все ожидания реализованы через `WebDriverWait`, что делает тесты стабильными и быстрыми.
-3. **Chain of Pages (Fluent Interface):** Методы страниц могут возвращать объект следующей страницы для создания цепочек действий: `loginPage.loginAs(user).checkDashboard();`.
-4. **Clean Code:** Использование понятных имен методов и переменных. Тесты должны читаться как документация.
-5. **Git Flow:** Каждая новая фича или тест-кейс разрабатывается в отдельной ветке.
+1. **Backend/Frontend:** `npm install` && `npm run dev` (доступно на `http://localhost:3000`)
+2. **Конфигурация:** Проверьте `baseUrl` в `src/main/resources/config.properties`.
 
-
-///                     Структура проекта (Project Structure)                          ///
-
-Краткое пояснение, где что искать. Например:
-
-src/main/java/core — ядро фреймворка (BasePage, драйверы).
-
-src/test/java/pages — описания страниц (локаторы и действия).
-
-src/test/java/tests — сами тест-кейсы.
-
-🚀 Запуск проекта
-1.Склонировать репозиторий: git clone https://github.com/vkadi-budetak/blablabike.git
-
-2.Установить зависимости: npm install
-3.Запустить локально: npm run dev
-4.Открыть в браузере: http://localhost:3000
 

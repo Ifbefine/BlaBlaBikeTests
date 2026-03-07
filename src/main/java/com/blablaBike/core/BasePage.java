@@ -4,16 +4,22 @@ package com.blablaBike.core;
 
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.Duration;
 
 public abstract class BasePage {
+    protected static final Logger logger = LoggerFactory.getLogger(BasePage.class);
 
     protected WebDriver driver;
     protected JavascriptExecutor js;
@@ -23,9 +29,9 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        // Инициализируем элементы PageFactory
+
+
         PageFactory.initElements(driver, this);
-        // Инициализируем вспомогательные инструменты
         this.js = (JavascriptExecutor) driver;
         this.softly = new SoftAssertions();
         this.actions = new Actions(driver);

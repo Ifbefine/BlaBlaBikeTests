@@ -41,9 +41,20 @@
 
 ---
 
-### 🚀 Быстрый запуск
+### 🚀 Инструкция по запуску
 
-1. **Backend/Frontend:** `npm install` && `npm run dev` (доступно на `http://localhost:3000`)
-2. **Конфигурация:** Проверьте `baseUrl` в `src/main/resources/config.properties`.
+Для работы тестов необходимо сначала запустить локальную версию сайта, а затем проект с автотестами.
+
+#### Шаг 1: Запуск Frontend (Сайт разработчиков)
+1. **Склонировать репозиторий:** `git clone https://github.com/vkadi-budetak/blablabike.git`
+2. **Установить зависимости:** `npm install`
+3. **Запустить локально:** `npm run dev`
+4. **Открыть в браузере:** [http://localhost:3000](http://localhost:3000)
+
+#### Шаг 2: Запуск QA Automation (Этот проект)
+1. **Склонировать репозиторий с тестами:** `git clone https://github.com/Ifbefine/BlaBlaBikeTests.git`
+2. **Настройка:** Убедитесь, что в файле `src/test/resources/config.properties` указан верный `baseUrl=http://localhost:3000`.
+3. **Запуск:** Откройте проект в IntelliJ IDEA и запустите тесты из папки `src/test/java/com/blablaBike/Tests/`.
+4. **Логи:** Все действия (клики, поиск элементов) отображаются в реальном времени в консоли (вкладка **Run**).
 
 

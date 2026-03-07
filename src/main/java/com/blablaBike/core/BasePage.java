@@ -119,4 +119,6 @@ public abstract class BasePage {
     public void assertAll() {
         softly.assertAll();
     }
+
+
 }

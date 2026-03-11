@@ -1,6 +1,6 @@
-﻿# 🚲 BlaBlaBike Automation Project
+﻿# 🚲 BlaBlaBikeTests Test Bench Application
 
-**BlaBlaBike** — сервис для поиска, выбора и быстрого бронирования велосипедов (школьная практика).
+**BlaBlaBike** — сервис для поиска, выбора и быстрого бронирования велосипедов
 
 ---
 

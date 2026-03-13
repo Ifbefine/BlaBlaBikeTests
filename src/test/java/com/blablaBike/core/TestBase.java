@@ -1,16 +1,17 @@
 package com.blablaBike.core;
 
+import com.blablaBike.utils.MyListener;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+//@Listeners({MyTestListener.class})
 public class TestBase {
     protected WebDriver driver;
     protected String baseUrl;

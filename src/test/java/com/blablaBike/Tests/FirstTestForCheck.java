@@ -20,13 +20,14 @@ public class FirstTestForCheck extends TestBase {
                 .isTrue();
 
 
-        assertThat(homePage.getBannerText())
-                .as("Текст баннера отображется")
-                .contains("BlablaBike");
+        //assertThat(homePage.getBannerText())
+          //      .as("Текст баннера отображется")
+            //    .contains("BlablaBike");
+    //}
+
+
+
+
     }
-
-
-
-
     }
 

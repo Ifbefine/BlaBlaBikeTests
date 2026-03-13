@@ -25,4 +25,5 @@ public class HomePage extends BasePage {
         waitOfElementVisibility(mainBanner,10);
         return mainBanner.getText();
     }
+
 }

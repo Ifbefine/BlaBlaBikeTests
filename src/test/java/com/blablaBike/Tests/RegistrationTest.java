@@ -5,6 +5,8 @@ import com.blablaBike.pages.HomePage;
 import com.blablaBike.pages.RegistrationPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -24,11 +26,26 @@ HomePage homePage;
 
     }
 
+
     @Test
     public void testRegistrationWithEmail()
     {
-        new RegistrationPage(driver).clickOnButtonSignUp().enterUserData("Mariia Testova","maritest@gmail.com","Test123$").clickOnSubmitButtonSignUp();
+        new RegistrationPage(driver).clickOnButtonSignUp().enterUserData("Mariia Testova","maritest@gmail.com","Test123$")
+                .clickOnSubmitButtonSignUp()
+                //.verifyUserName()
+        ;
     }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/ValidData.csv", numLinesToSkip = 1)
+    public void testRegistrationWithParameters(String name, String email, String password)
+    {
+        new RegistrationPage(driver).clickOnButtonSignUp().enterUserData(name,email,password)
+                .clickOnSubmitButtonSignUp()
+        //.verifyUserName()
+        ;
+    }
+
 
 
 

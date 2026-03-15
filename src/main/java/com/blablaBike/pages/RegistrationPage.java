@@ -42,6 +42,8 @@ public class RegistrationPage extends BasePage {
     return  this;
     }
 
+
+
     @FindBy(css = "button[type='submit']")
     WebElement submitButton;
 

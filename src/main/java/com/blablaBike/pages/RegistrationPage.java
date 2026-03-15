@@ -26,4 +26,27 @@ public class RegistrationPage extends BasePage {
      click(googleButton);
      return this;
     }
+
+    @FindBy(id = "name")
+    WebElement nameField;
+    @FindBy(id="email")
+    WebElement emailField;
+    @FindBy(id = "password")
+    WebElement passwordField;
+
+    public RegistrationPage enterUserData(String name, String email, String password)
+    {
+     type(nameField,name);
+     type(emailField,email);
+     type(passwordField,password);
+    return  this;
+    }
+
+    @FindBy(css = "button[type='submit']")
+    WebElement submitButton;
+
+    public RegistrationPage clickOnSubmitButtonSignUp() {
+        click(submitButton);
+        return this;
+    }
 }

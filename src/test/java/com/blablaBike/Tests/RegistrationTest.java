@@ -18,10 +18,24 @@ HomePage homePage;
     }
 
     @Test
-    public void testRegistration()
+    public void testRegistrationWithGoogle()
     {
        new RegistrationPage(driver).clickOnButtonSignUp().clickOnButtonGoogle();
 
     }
+
+    @Test
+    public void testRegistrationWithEmail()
+    {
+        new RegistrationPage(driver).clickOnButtonSignUp().enterUserData("Mariia Testova","maritest@gmail.com","Test123$").clickOnSubmitButtonSignUp();
+    }
+
+
+
+
+
+
+
+
 
 }

@@ -8,11 +8,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RegistrationTest extends TestBase {
+public class RegistrationPositiveTest extends TestBase {
 HomePage homePage;
 ProfilePage profilePage;
     @BeforeEach
@@ -27,7 +26,6 @@ ProfilePage profilePage;
     public void testRegistrationWithGoogle()
     {
        new RegistrationPage(driver).clickOnButtonSignUp().clickOnButtonGoogle();
-
 
     }
 

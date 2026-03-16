@@ -76,7 +76,10 @@ public abstract class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(seconds))
                 .until(ExpectedConditions.visibilityOf(element));
     }
-
+    protected boolean isContainsText(String text, WebElement element)
+    {
+        return element.getText().contains(text);
+    }
     public boolean shouldHaveText(WebElement element, String text, int seconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(seconds))
                 .until(ExpectedConditions.textToBePresentInElement(element, text));

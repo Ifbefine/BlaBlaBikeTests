@@ -1,6 +1,7 @@
 package com.blablaBike.pages;
 
 import com.blablaBike.core.BasePage;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,4 +52,6 @@ public class RegistrationPage extends BasePage {
         click(submitButton);
         return this;
     }
+
+
 }

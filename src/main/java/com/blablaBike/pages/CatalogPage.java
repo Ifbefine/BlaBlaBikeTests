@@ -18,7 +18,6 @@ public class CatalogPage extends BasePage {
 
     public void openSecondItem() {
 
-        // wait until items are loaded
         for (int i = 0; i < 10; i++) {
             if (items.size() > 1) {
                 break;
@@ -36,7 +35,7 @@ public class CatalogPage extends BasePage {
             throw new RuntimeException("Items were not loaded");
         }
 
-        // wait for item page to load
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

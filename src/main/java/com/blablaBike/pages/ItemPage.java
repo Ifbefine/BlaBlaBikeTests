@@ -15,22 +15,22 @@ public class ItemPage extends BasePage {
     @FindBy(css = "div.relative img")
     private WebElement itemImage;
 
+    public boolean isImageVisible() {
+        return itemImage.isDisplayed();
+    }
+
 
     @FindBy(css = "div.bg-blue-600")
     private WebElement itemType;
+
+    public String getItemType() {
+        return itemType.getText();
+    }
 
 
     @FindBy(css = "p.text-4xl.font-black")
     private WebElement itemPrice;
 
-
-    public boolean isImageVisible() {
-        return itemImage.isDisplayed();
-    }
-
-    public String getItemType() {
-        return itemType.getText();
-    }
 
     public String getItemPrice() {
         return itemPrice.getText();

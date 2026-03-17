@@ -35,4 +35,26 @@ public class ItemPage extends BasePage {
     public String getItemPrice() {
         return itemPrice.getText();
     }
+
+    @FindBy(css = "div[class*='bg-']")
+    private WebElement availabilityStatus;
+
+    public String getAvailabilityStatus() {
+        return availabilityStatus.getText();
+    }
+
+    @FindBy(css = "button.w-full")
+    private WebElement rentButton;
+
+    public boolean isRentButtonVisible() {
+        return rentButton.isDisplayed();
+    }
+
+    @FindBy(css = "h1")
+    private WebElement bikeName;
+
+    public String getBikeName() {
+        return bikeName.getText();
+    }
+
 }

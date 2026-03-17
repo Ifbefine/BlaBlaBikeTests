@@ -52,4 +52,49 @@ public class ItemCardTests extends TestBase {
         assertThat(itemPage.getItemPrice())
                 .contains("₽");
     }
+
+    @Test
+    public void itemAvailabilityStatusDisplayed() {
+
+        HomePage homePage = new HomePage(driver);
+        homePage.openCatalog();
+
+        CatalogPage catalogPage = new CatalogPage(driver);
+        catalogPage.openSecondItem();
+
+        ItemPage itemPage = new ItemPage(driver);
+
+        assertThat(itemPage.getAvailabilityStatus())
+                .isNotEmpty();
+    }
+
+    @Test
+    public void rentButtonDisplayed() {
+
+        HomePage homePage = new HomePage(driver);
+        homePage.openCatalog();
+
+        CatalogPage catalogPage = new CatalogPage(driver);
+        catalogPage.openSecondItem();
+
+        ItemPage itemPage = new ItemPage(driver);
+
+        assertThat(itemPage.isRentButtonVisible()).isTrue();
+    }
+
+    @Test
+    public void bikeNameDisplayed() {
+
+        HomePage homePage = new HomePage(driver);
+        homePage.openCatalog();
+
+        CatalogPage catalogPage = new CatalogPage(driver);
+        catalogPage.openSecondItem();
+
+        ItemPage itemPage = new ItemPage(driver);
+
+        assertThat(itemPage.getBikeName())
+                .isNotEmpty();
+    }
+
 }

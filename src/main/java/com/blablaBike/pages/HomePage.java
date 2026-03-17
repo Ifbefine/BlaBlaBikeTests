@@ -26,4 +26,11 @@ public class HomePage extends BasePage {
         return mainBanner.getText();
     }
 
+    @FindBy(css = "a[href='/catalog']")
+    private WebElement catalogLink;
+
+    public void openCatalog() {
+        catalogLink.click();
+    }
+
 }

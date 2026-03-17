@@ -25,4 +25,12 @@ public class HomePage extends BasePage {
         waitOfElementVisibility(mainBanner,10);
         return mainBanner.getText();
     }
+
+
+    @FindBy(xpath = "//a[@href='/catalog' and contains(text(), 'Rent Now')]")
+    private WebElement rentNowButton;
+    public void clickRentNow() {
+        waitOfElementVisibility(rentNowButton, 10);
+        rentNowButton.click();
+    }
 }

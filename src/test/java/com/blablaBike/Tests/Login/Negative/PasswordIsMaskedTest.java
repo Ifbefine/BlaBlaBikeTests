@@ -1,13 +1,15 @@
-package com.blablaBike.Tests.Negative;
+package com.blablaBike.Tests.Login.Negative;
 
 import com.blablaBike.core.TestBase;
 import com.blablaBike.pages.LoginPage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ValidatingEmptyFieldsTest extends TestBase {
+public class PasswordIsMaskedTest extends TestBase {
     WebDriver driver;
     LoginPage loginPage;
     @BeforeEach
@@ -17,11 +19,14 @@ public class ValidatingEmptyFieldsTest extends TestBase {
         loginPage = new LoginPage(driver);
 
 
-
     }
     @Test
-    public void ValidatingEmptyFieldsTest(){
-        loginPage.clickLoginButton();
-        loginPage.getEmailErrorMessage();
-    }
+    @Tag("OK")
+    public void testPasswordIsMasked() {
+
+        String inputType = loginPage.getPasswordInputType();
+        Assertions.assertEquals("password", inputType);
+        System.out.println(inputType);
+
 }
+    }

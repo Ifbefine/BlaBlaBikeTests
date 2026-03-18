@@ -1,6 +1,7 @@
 package com.blablaBike.pages;
 
 import com.blablaBike.core.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -56,5 +57,13 @@ public class ItemPage extends BasePage {
     public String getBikeName() {
         return bikeName.getText();
     }
+
+    @FindBy(xpath = "//img[contains(@src,'placeholder-bike')]")
+    private WebElement placeholderImage;
+
+    public boolean isPlaceholderDisplayed() {
+        return isElementVisible(placeholderImage);
+    }
+
 
 }

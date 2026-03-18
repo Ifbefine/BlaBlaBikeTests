@@ -97,4 +97,19 @@ public class ItemCardTests extends TestBase {
                 .isNotEmpty();
     }
 
+    @Test
+    public void placeholderWhenNoImage() {
+
+        HomePage homePage = new HomePage(driver);
+        homePage.openCatalog();
+
+        CatalogPage catalogPage = new CatalogPage(driver);
+        catalogPage.openItemWithPlaceholderImage();
+
+        ItemPage itemPage = new ItemPage(driver);
+
+        assertThat(itemPage.isPlaceholderDisplayed()).isTrue();
+    }
+
+
 }

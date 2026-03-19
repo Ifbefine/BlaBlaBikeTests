@@ -1,7 +1,6 @@
-package com.blablaBike.core;
+package com.blablaBike.utils;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.WebDriverListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,25 +13,25 @@ public class MyListener implements WebDriverListener {
     // Этот метод сработает ДО клика по любому элементу
     @Override
     public void beforeClick(WebElement element) {
-        logger.info("👉 Попытка клика по элементу: " + getElementDescription(element));
+        logger.info(" Попытка клика по элементу: " + getElementDescription(element));
     }
 
     // Этот метод сработает ПОСЛЕ клика
     @Override
     public void afterClick(WebElement element) {
-        logger.info("✅ Клик выполнен успешно");
+        logger.info(" Клик выполнен успешно");
     }
 
     // Логируем ввод текста
     @Override
     public void beforeSendKeys(WebElement element, CharSequence... keysToSend) {
-        logger.info("⌨️ Ввожу текст [" + String.join("", keysToSend) + "] в элемент: " + getElementDescription(element));
+        logger.info("Ввожу текст [" + String.join("", keysToSend) + "] в элемент: " + getElementDescription(element));
     }
 
     // Если случится ошибка — она тоже попадет в лог!
     @Override
     public void onError(Object target, java.lang.reflect.Method method, Object[] args, InvocationTargetException e) {
-        logger.error("❌ ОШИБКА в методе " + method.getName() + ": " + e.getTargetException().getMessage());
+        logger.error(" ОШИБКА в методе " + method.getName() + ": " + e.getTargetException().getMessage());
     }
 
     // Вспомогательный метод, чтобы лог был читаемым

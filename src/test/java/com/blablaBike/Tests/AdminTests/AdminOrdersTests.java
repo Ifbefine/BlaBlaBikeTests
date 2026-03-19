@@ -1,11 +1,6 @@
-package com.blablaBike.Tests;
+package com.blablaBike.Tests.AdminTests;
 
 import com.blablaBike.core.TestBase;
-import com.blablaBike.pages.AdminPage;
-import com.blablaBike.pages.LoginPage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

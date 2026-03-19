@@ -1,4 +1,4 @@
-package com.blablaBike.Tests;
+package com.blablaBike.Tests.Registration;
 
 import com.blablaBike.core.TestBase;
 import com.blablaBike.pages.HomePage;

@@ -1,10 +1,9 @@
-package com.blablaBike.Tests;
+package com.blablaBike.Tests.AdminTests;
 
 import com.blablaBike.core.TestBase;
 import com.blablaBike.pages.AdminDashboardPage;
 import com.blablaBike.pages.CatalogPage;
 import com.blablaBike.pages.window.AddBikePage;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

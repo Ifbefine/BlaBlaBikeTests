@@ -1,16 +1,13 @@
-package com.blablaBike.Tests;
+package com.blablaBike.Tests.Registration;
 
 import com.blablaBike.core.TestBase;
 import com.blablaBike.pages.HomePage;
 import com.blablaBike.pages.RegistrationPage;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

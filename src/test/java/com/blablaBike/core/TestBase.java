@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+//@Listeners({MyTestListener.class})
 public class TestBase {
     protected WebDriver driver;
     protected String baseUrl;

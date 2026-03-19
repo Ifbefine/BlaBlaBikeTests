@@ -1,0 +1,9 @@
+name,email,password
+,maritest@gmail.com,Test1234$
+12345,maritest@gmail.com,Test1234$
+@@@@,maritest@gmail.com,Test1234$
+Anna,maritest@gmail.com,Test1234$
+---,maritest@gmail.com,Test1234$
+qwertzuiopüasdfghjklyxcvbnmwert,maritest@gmail.com,Test1234$
+Anna8,maritest@gmail.com,Test1234$
+Anna$,maritest@gmail.com,Test1234$

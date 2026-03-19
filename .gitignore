@@ -17,5 +17,5 @@ desktop.ini
 ### Логи и отчеты (Чтобы не мусорить в Git) ###
 *.log
 /allure-results/
-/allure-report/      a
-/test-ou tput/
+/allure-report/
+/test-output/

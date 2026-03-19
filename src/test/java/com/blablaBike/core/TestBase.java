@@ -27,10 +27,9 @@ public class TestBase {
 
         // ключ именно "baseUrl" (регистр важен!)
         this.baseUrl = props.getProperty("baseUrl");
-//        if (baseUrl == null || baseUrl.isEmpty()) {
-//             baseUrl = "http://localhost:3000";
-        baseUrl = "https://blablabike-arx6.vercel.app";
-//        }
+        if (baseUrl == null || baseUrl.isEmpty()) {
+            baseUrl = "https://blablabike-arx6.vercel.app";
+        }
 
         WebDriver originalDriver = new ChromeDriver();
         MyListener listener = new MyListener();

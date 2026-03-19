@@ -32,8 +32,4 @@ public class HomePage extends BasePage {
         catalogLink.click();
     }
 
-    public void clickRentNow() {
-        waitOfElementVisibility(rentNowButton, 10);
-        rentNowButton.click();
-    }
 }

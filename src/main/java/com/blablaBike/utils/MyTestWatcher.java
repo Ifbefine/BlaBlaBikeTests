@@ -17,5 +17,21 @@ public class MyTestWatcher  implements TestWatcher {
 //    public void onTestFailure(ITestResult result) {
 //        logger.error("Test FAILED: {}",result.getMethod().getMethodName());
 //        logger.error("Reason: {}",result.getThrowable());
+
+//    Logger logger= LoggerFactory.getLogger(MyTestWatcher.class);
+//
+//    @Override
+//    public void testSuccessful(ExtensionContext context) {
+//        logger.info("The method {} is PASSED",context.getTestMethod().toString());
+//        logger.info("{}",context.getDisplayName());
+//        logger.info("**************************************************");
+//    }
+//
+//    @Override
+//    public void testFailed(ExtensionContext context, Throwable cause) {
+//        logger.error("The method !!!{}!!! is FAILED",context.getTestMethod());
+//        logger.error("{}",context.getDisplayName());
+//        logger.error("{}",cause.getMessage());
+//        logger.info("**************************************************");
 //    }
 }

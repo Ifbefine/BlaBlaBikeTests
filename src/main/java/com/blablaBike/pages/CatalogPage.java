@@ -6,12 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
 public class CatalogPage extends BasePage {
-
+ public CatalogPage(WebDriver driver) {
+        super(driver);
+    }
 
     @FindBy(css = "a.group")
     private List<WebElement> bikeCards;
@@ -22,9 +25,7 @@ public class CatalogPage extends BasePage {
     @FindBy(xpath = "//*[contains(text(), 'bikes found') or contains(text(), 'No bikes') or contains(text(), 'found for category')]")
     private WebElement emptyMessage;
 
-    public CatalogPage(WebDriver driver) {
-        super(driver);
-    }
+
 
     public void waitForCatalogToLoad() {
         wait.until(ExpectedConditions.urlContains("/catalog"));
@@ -64,5 +65,36 @@ public class CatalogPage extends BasePage {
     public boolean noBikesWithStatus(String statusName) {
         return getAllBikeStatuses().stream()
                 .noneMatch(s -> s.equalsIgnoreCase(statusName));
+    }
+}
+    @FindBy(xpath = "//select[contains(@class,'bg-gray-100')]")
+    WebElement showSelect;
+
+    @FindBy(xpath = "//option[@value='3']")
+    WebElement showSelect12;
+    @FindBy(xpath = "//*[contains(text(),'TEST')]")
+    WebElement addedBikeBrand;
+
+
+
+    public CatalogPage waitForCatalogPage() {
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.urlContains("catalog"));
+        return this;
+    }
+
+    public boolean isBikeAdded() {
+        scrollWithJS(0, 1000);
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(addedBikeBrand));
+        return addedBikeBrand.isDisplayed();
+    }
+    public CatalogPage verifyAddBike()
+    {
+        scrollWithJS(0,3000);
+        clickWithJS(showSelect);
+        clickWithJS(showSelect12);
+
+        return this;
     }
 }

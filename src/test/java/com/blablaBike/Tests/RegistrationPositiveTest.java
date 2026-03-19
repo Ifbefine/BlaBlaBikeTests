@@ -34,7 +34,7 @@ ProfilePage profilePage;
     public void testRegistrationWithEmail()
     {
         //String email = "mariia" + System.currentTimeMillis() + "@gmail.com";
-        new RegistrationPage(driver).clickOnButtonSignUp().enterUserData("Mariia Testova","maritest3@gmail.com","Test123$")
+        new RegistrationPage(driver).clickOnButtonSignUp().enterUserData("Mariia Testova","maritest8@gmail.com","Test123$")
                 .clickOnSubmitButtonSignUp();
         new ProfilePage(driver).verifyUserName("Mariia Testova");
     }

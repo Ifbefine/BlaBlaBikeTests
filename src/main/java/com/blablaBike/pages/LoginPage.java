@@ -14,10 +14,13 @@ public class LoginPage extends BasePage {
   
      WebDriver driver;
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
+//    public LoginPage(WebDriver driver) {
+//        this.driver = driver;
+//        PageFactory.initElements(driver, this);
+//    }
+public LoginPage(WebDriver driver) {
+    super(driver);
+}
 
     @FindBy (id = "email")
     WebElement emailField;
@@ -25,6 +28,7 @@ public class LoginPage extends BasePage {
     WebElement passwordField;
     @FindBy(xpath = "//button[contains(text(), 'Log In')]")
     WebElement loginButton;
+
 
 
     public void enterEmail(String email) {
@@ -55,41 +59,39 @@ public class LoginPage extends BasePage {
         return passwordField.getAttribute("type");
     }
   
-  
-    private final By emailField = By.cssSelector("input[type='email']");
-    private final By passwordField = By.cssSelector("input[type='password']");
-
-    private final By loginButton = By.cssSelector("button[type='submit']");
-
-    private final By signOutButton = By.xpath("//button[contains(text(), 'Sign Out')]");
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
-    public void loginAsAdmin() {
-        boolean isAlreadyLoggedIn = driver.findElements(signOutButton).size() > 0;
-
-        if (isAlreadyLoggedIn) {
-            System.out.println("✅ Сессия активна, пропускаем ввод данных.");
-            return;
-        }
-
-        System.out.println("🔑 Выполняю вход...");
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(emailField))
-                .sendKeys("admin@test.com");
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField))
-                .sendKeys("admin123");
-
-        wait.until(ExpectedConditions.elementToBeClickable(loginButton))
-                .click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(signOutButton));
-        System.out.println("🎉 Вход выполнен успешно!");
-       
-    }
+//  Черновик Ханна
+//    private final By emailField = By.cssSelector("input[type='email']");
+//    private final By passwordField = By.cssSelector("input[type='password']");
+//
+//    private final By loginButton = By.cssSelector("button[type='submit']");
+//
+//    private final By signOutButton = By.xpath("//button[contains(text(), 'Sign Out')]");
+//
+//
+//
+//    public void loginAsAdmin() {
+//        boolean isAlreadyLoggedIn = driver.findElements(signOutButton).size() > 0;
+//
+//        if (isAlreadyLoggedIn) {
+//            System.out.println("✅ Сессия активна, пропускаем ввод данных.");
+//            return;
+//        }
+//
+//        System.out.println("🔑 Выполняю вход...");
+//
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(emailField))
+//                .sendKeys("admin@test.com");
+//
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField))
+//                .sendKeys("admin123");
+//
+//        wait.until(ExpectedConditions.elementToBeClickable(loginButton))
+//                .click();
+//
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(signOutButton));
+//        System.out.println("🎉 Вход выполнен успешно!");
+//
+//    }
 }
 
 

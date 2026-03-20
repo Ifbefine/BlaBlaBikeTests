@@ -39,6 +39,11 @@ public class AdminDashboardPage extends BasePage {
         return this;
     }
 
+@FindBy(xpath = "//a[normalize-space()='Admin']")
+WebElement adminDashboardLink;
 
-
+    public AdminDashboardPage clickOnAdminLink() {
+        click(adminDashboardLink);
+        return this;
+    }
 }

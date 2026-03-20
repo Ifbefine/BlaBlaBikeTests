@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public class LoginPage extends BasePage {
   
-     WebDriver driver;
+
 
 //    public LoginPage(WebDriver driver) {
 //        this.driver = driver;
@@ -32,12 +32,14 @@ public LoginPage(WebDriver driver) {
 
 
     public void enterEmail(String email) {
-        emailField.sendKeys(email);
+        type(emailField, email);
+        //emailField.sendKeys(email);
 
     }
 
     public void enterPassword(String password) {
-        passwordField.sendKeys(password);
+        type(passwordField, password);
+        //passwordField.sendKeys(password);
     }
     public void clickLoginButton() {
         loginButton.click();

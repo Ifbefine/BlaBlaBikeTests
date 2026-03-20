@@ -9,13 +9,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTests  extends TestBase {
-WebDriver driver;
+
 LoginPage loginPage;
 @BeforeEach
     public void setup(){
-        driver = new ChromeDriver();
-        driver.get("https://blablabike-arx6.vercel.app/login");
-   loginPage = new LoginPage(driver);
+    driver.get("https://blablabike-arx6.vercel.app/login");
+       // driver = new ChromeDriver();
+        loginPage = new LoginPage(driver);
 
 
     }

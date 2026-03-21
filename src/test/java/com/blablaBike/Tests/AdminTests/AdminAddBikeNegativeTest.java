@@ -7,10 +7,10 @@ import com.blablaBike.pages.LoginPage;
 import com.blablaBike.pages.window.AddBikePage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-public class AdminAddBikePositiveTest extends TestBase {
+public class AdminAddBikeNegativeTest extends TestBase {
 
     AdminDashboardPage adminDashboardPage;
     AddBikePage addBikePage;
@@ -35,25 +35,32 @@ public class AdminAddBikePositiveTest extends TestBase {
     }
 
 
-    @Test
-    public void addBikePositiveTest()
-    {
 
+    @Test
+    public void addBikeNegativeWithEmptyFieldTest()
+    {
         new AdminDashboardPage(driver).clickOnAdminLink()
-                .clickOnAddBikeButton()
-        ;
-        new AddBikePage(driver).enterDataBike("TEST3","Cross Classico Pro ","Bike for Urban ","220","https://surl.li/jtxuxr")
+                .clickOnAddBikeButton();
+        new AddBikePage(driver).enterDataBike("TEST3","","Bike for Urban ","220","https://surl.li/jtxuxr")
                 .selectBikeCategory()
                 .clickOnSaveButton()
+                .verifyMesageAddBike()
         ;
-        new AddBikePage(driver) .clickOnCatalogButton();
-        new CatalogPage(driver).waitForCatalogPage();
-        assertTrue(catalogPage.isBikeAdded());
-
-
 
 
     }
+
+
+   @ParameterizedTest
+   @CsvFileSource(resources = "/NegativeDataAddBike.csv", numLinesToSkip = 1)
+    public void AdminAddBikeNegativeWithInvalidDataFields(String brand,String model,String price) {
+
+        new AdminDashboardPage(driver).clickOnAdminLink()
+                .clickOnAddBikeButton();
+        new AddBikePage(driver).enterInvalidDataAddBike(brand,model,price).selectBikeCategory().clickOnSaveButton().verifyMesageAddBike();
+
+    }
+
 
 
 

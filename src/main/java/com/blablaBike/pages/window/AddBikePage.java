@@ -23,7 +23,7 @@ public class AddBikePage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Price per day']")
     WebElement priceInput;
 
-    @FindBy(xpath = "//input[@placeholder='Price per day']")
+    @FindBy(xpath = "//input[@placeholder='Image URL']")
     WebElement imageInput;
 
 
@@ -41,7 +41,7 @@ public class AddBikePage extends BasePage {
 
     @FindBy(css = "select[name='bike_category_id']")
     WebElement bikeCategory;
-    @FindBy(xpath = "/html/body/div[2]/main/main/div/div[3]/form/select/option[9]")
+    @FindBy(xpath = "//option[@value='6a04b768-965c-43f1-8bb3-47487711c7d9']")
     WebElement cyclocrossCategory;
 
     public AddBikePage selectBikeCategory() {

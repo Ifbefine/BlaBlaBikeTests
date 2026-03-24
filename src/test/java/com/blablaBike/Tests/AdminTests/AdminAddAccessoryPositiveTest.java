@@ -1,55 +1,52 @@
 package com.blablaBike.Tests.AdminTests;
 
 import com.blablaBike.core.TestBase;
+import com.blablaBike.pages.AccessoriesPage;
 import com.blablaBike.pages.AdminDashboardPage;
 import com.blablaBike.pages.CatalogPage;
 import com.blablaBike.pages.LoginPage;
+import com.blablaBike.pages.window.AddAccessoriesPage;
 import com.blablaBike.pages.window.AddBikePage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+public class AdminAddAccessoryPositiveTest extends TestBase {
 
-public class AdminAddBikePositiveTest extends TestBase {
+
 
     AdminDashboardPage adminDashboardPage;
-    AddBikePage addBikePage;
     CatalogPage catalogPage;
     LoginPage loginPage;
+
+    AccessoriesPage accessoriesPage;
+    AddAccessoriesPage addAccessoriesPage;
 
     @BeforeEach
     public void precondition() {
         driver.get("https://blablabike-arx6.vercel.app/login");
-
         loginPage = new LoginPage(driver);
         loginPage.enterEmail("mariadmin@gmail.com");
         loginPage.enterPassword("Test1234$");
         loginPage.clickLoginButton();
         adminDashboardPage = new AdminDashboardPage(driver);
         adminDashboardPage.verifyPageAdminDashboard();
-        addBikePage = new AddBikePage(driver);
         catalogPage = new CatalogPage(driver);
+        accessoriesPage = new AccessoriesPage(driver);
+        addAccessoriesPage = new AddAccessoriesPage(driver);
+
 
     }
 
 
     @Test
-    public void addBikePositiveTest()
-    {
+    public void adminAddAccessoryPositiveTest() {
 
-        new AdminDashboardPage(driver).clickOnAdminLink()
-                .clickOnAddBikeButton()
-        ;
-        new AddBikePage(driver).enterDataBike("TEST","Cross Classico Pro ","Bike for Urban ","220","https://surl.li/jtxuxr")
-                .selectBikeCategory()
-                .clickOnSaveButton()
-        ;
-        new AddBikePage(driver) .clickOnCatalogButton();
-        new CatalogPage(driver).waitForCatalogPage();
-        assertTrue(catalogPage.isBikeAdded());
+        new AdminDashboardPage(driver).clickOnAdminLink().clickOnAccessoriesLink();
+        new AccessoriesPage(driver).clickOnAddAccessoryButton();
+        new AddAccessoriesPage(driver).enterAccessoryData("Schlemtest","20")
+                .clickOnAccessorySaveButton();
+        new AccessoriesPage(driver).verifyAddAccessory();
+
 
     }
-
-
-
 }

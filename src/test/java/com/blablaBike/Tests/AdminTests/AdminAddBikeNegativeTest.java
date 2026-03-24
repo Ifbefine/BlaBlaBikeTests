@@ -57,7 +57,8 @@ public class AdminAddBikeNegativeTest extends TestBase {
 
         new AdminDashboardPage(driver).clickOnAdminLink()
                 .clickOnAddBikeButton();
-        new AddBikePage(driver).enterInvalidDataAddBike(brand,model,price).selectBikeCategory().clickOnSaveButton().verifyMesageAddBike();
+        new AddBikePage(driver).enterInvalidDataAddBike(brand,model,price).selectBikeCategory()
+                .clickOnSaveButton().verifyMesageAddBike();
 
     }
 

@@ -46,4 +46,13 @@ WebElement adminDashboardLink;
         click(adminDashboardLink);
         return this;
     }
+
+    @FindBy(xpath = "//a[normalize-space()='Accessories']")
+    WebElement accessoriesLink;
+    public AdminDashboardPage clickOnAccessoriesLink() {
+
+        click(accessoriesLink);
+        return this;
+
+    }
 }

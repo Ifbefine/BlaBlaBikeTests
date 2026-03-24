@@ -109,11 +109,11 @@ public class CatalogPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(showSelect));
 
         Select select = new Select(showSelect);
-        select.selectByVisibleText("Все");
+        select.selectByVisibleText("All");
 
         // ждём, что значение реально выбралось
         wait.until(driver ->
-                new Select(showSelect).getFirstSelectedOption().getText().trim().equals("Все")
+                new Select(showSelect).getFirstSelectedOption().getText().trim().equals("All")
         );
 
         // после выбора "Все" начинаем поиск заново

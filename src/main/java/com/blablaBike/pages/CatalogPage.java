@@ -6,13 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.util.List;
-import java.util.stream.Collectors;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
 
 public class CatalogPage extends BasePage {
- public CatalogPage(WebDriver driver) {
+
+    public CatalogPage(WebDriver driver) {
         super(driver);
     }
 

@@ -6,6 +6,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -76,7 +77,10 @@ public abstract class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(seconds))
                 .until(ExpectedConditions.visibilityOf(element));
     }
-
+    protected boolean isContainsText(String text, WebElement element)
+    {
+        return element.getText().contains(text);
+    }
     public boolean shouldHaveText(WebElement element, String text, int seconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(seconds))
                 .until(ExpectedConditions.textToBePresentInElement(element, text));
@@ -118,6 +122,14 @@ public abstract class BasePage {
 
     public void assertAll() {
         softly.assertAll();
+    }
+
+
+    @FindBy(css = "div.text-red-500")
+    WebElement alertMessage;
+
+    public String getAlertColor() {
+        return alertMessage.getCssValue("color");
     }
 
 

@@ -13,7 +13,7 @@ public class BookingPage extends BasePage {
     public BookingPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(xpath = "//button[text()='Book Now']")
+    @FindBy(xpath = "//button[contains(text(), 'Book Now')]")
     private WebElement bookBtn;
     public void clickOnBookingBtn() {
         waitOfElementVisibility(bookBtn,5);
@@ -26,11 +26,10 @@ public class BookingPage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='datetime end']")
     private WebElement endDateInput;
 
-    public void entryDate(String d1, String m1, String y1, String h1, String min1,
-                          String d2, String m2, String y2, String h2, String min2) {
-
-        String startIso = String.format("%s-%s-%sT%s:%s", y1, m1, d1, h1, min1);
-        String endIso = String.format("%s-%s-%sT%s:%s", y2, m2, d2, h2, min2);
+    public void entryDate(String d1, String m1, String y1, String d2, String m2, String y2) {
+        // Формат теперь строго YYYY-MM-DD
+        String startIso = String.format("%s-%s-%s", y1, m1, d1);
+        String endIso = String.format("%s-%s-%s", y2, m2, d2);
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -41,16 +40,11 @@ public class BookingPage extends BasePage {
                         "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));" +
                         "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));";
 
-
         wait.until(ExpectedConditions.visibilityOf(startDateInput));
 
 
         js.executeScript(smartSet, startDateInput, startIso);
         js.executeScript(smartSet, endDateInput, endIso);
-
-
-        startDateInput.click();
-        endDateInput.click();
     }
     @FindBy(name = "firstName")
     private WebElement firstNameInput;
@@ -72,6 +66,22 @@ public class BookingPage extends BasePage {
         emailInput.sendKeys(email);
         phoneInput.sendKeys(phone);
 
+    }
+    @FindBy(xpath = "//p[text()='Lock']/ancestor::label//input")
+    private WebElement lockCheckbox;
+
+    @FindBy(xpath = "//p[text()=' Insurance']/ancestor::label//input")
+    private WebElement insuranceCheckbox;
+
+    @FindBy(xpath = "//p[text()='Helmet']/ancestor::label//input")
+    private WebElement helmetCheckbox;
+
+    // Метод для выбора всех аксессуаров
+    public void selectAllAccessories() {
+        wait.until(ExpectedConditions.elementToBeClickable(lockCheckbox));
+        if (!lockCheckbox.isSelected()) lockCheckbox.click();
+        if (!insuranceCheckbox.isSelected()) insuranceCheckbox.click();
+        if (!helmetCheckbox.isSelected()) helmetCheckbox.click();
     }
     @FindBy(xpath = "//input[@placeholder='0000 0000 0000 0000']")
     private WebElement cardNumberInput;

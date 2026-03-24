@@ -20,11 +20,11 @@ public class BookBikeTest extends TestBase {
 
     @BeforeEach
     public void setUp() {
-        // 2. Сначала создаем драйвер
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        // 3. ТЕПЕРЬ создаем объекты страниц, передавая им готовый драйвер
+
         loginPage = new LoginPage(driver);
         catalogPage = new CatalogPage(driver);
         bookingPage = new BookingPage(driver);
@@ -36,15 +36,14 @@ public class BookBikeTest extends TestBase {
         loginPage.clickLoginButton();
 
 
-        // 1. ЖДЕМ, пока загрузится профиль.
-        // Это гарантирует, что сервер прислал куки и браузер их сохранил.
+
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.urlContains("profile"));
 
-        // 2. Теперь, когда мы точно залогинены, прыгаем в каталог
+
         driver.get("https://blablabike-arx6.vercel.app/catalog");
 
-        // 3. (Опционально) Убедимся, что каталог открылся
+
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.urlContains("catalog"));
 
@@ -60,16 +59,16 @@ public class BookBikeTest extends TestBase {
         // 1. Контакты
         bookingPage.fillContactDetails("Vova", "Testov", "vova@example.com", "+49123456789");
 
-        // 2. Даты (используем тот "умный" JS метод, чтобы не стирались!)
-        bookingPage.entryDate("25", "03", "2026", "14", "00",
-                "26", "03", "2026", "15", "30");
+        // 2. Даты
+        bookingPage.entryDate("25", "03", "2026",
+                "26", "03", "2026");
 
         // 3. Карта
         bookingPage.fillPaymentDetails("4444555566667777", "12/28", "123");
 
-        Thread.sleep(5000); // Даем время посмотреть, что всё заполнено
+        Thread.sleep(5000);
 
-        // 4. Финальный аккорд!
+        //
         bookingPage.clickConfirmAndPay();
         Thread.sleep(10000);
     }

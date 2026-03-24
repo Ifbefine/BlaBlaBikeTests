@@ -48,50 +48,31 @@ public class BookBikeInRepairTest extends TestBase {
                 .until(ExpectedConditions.urlContains("catalog"));
 
     }
-    @Tag("NOT WORKING/bug")
     @Test
-    public void BookBikePastDateTest() throws InterruptedException {
+    public void BookBikeInRepairTest() throws InterruptedException {
         Thread.sleep(2000);
+
+        // "In Repair"
+        catalogPage.filterByStatus("In Repair");
+        Thread.sleep(2000); // Даем фильтру отработать
+
+        // 2
         catalogPage.openSecondItem();
+
         Thread.sleep(2000);
+
+        // 3.
         bookingPage.clickOnBookingBtn();
-        //  Контакты
-        bookingPage.fillContactDetails("Vova", "Testov", "vova@example.com", "+49123456789");
 
-        //  Даты
-        bookingPage.entryDate("21", "03", "2023", "14", "00",
-                "21", "03", "2024", "15", "30");
-
-        //  Карта
+        // Заполняем данные
+        bookingPage.fillContactDetails("Vova", "RepairCheck", "vova@example.com", "+49123456789");
+        bookingPage.entryDate("25", "03", "2026", "26", "03", "2026");
         bookingPage.fillPaymentDetails("4444555566667777", "12/28", "123");
 
-        Thread.sleep(5000);
-
-        //  Финал
         bookingPage.clickConfirmAndPay();
-        Thread.sleep(10000);
-    }
-    @Tag("NOT WORKING/bug")
-    @Test
-    public void BookBikeFutureDateTest() throws InterruptedException {
-        Thread.sleep(2000);
-        catalogPage.openSecondItem();
-        Thread.sleep(2000);
-        bookingPage.clickOnBookingBtn();
-        // 1. Контакты
-        bookingPage.fillContactDetails("Vova", "Testov", "vova@example.com", "+49123456789");
 
-        // 2. Даты
-        bookingPage.entryDate("21", "03", "2027", "14", "00",
-                "21", "03", "2025", "15", "30");
-
-        // 3. Карта
-        bookingPage.fillPaymentDetails("4444555566667777", "12/28", "123");
 
         Thread.sleep(5000);
-
-        // 4. Финал
-        bookingPage.clickConfirmAndPay();
-        Thread.sleep(10000);
     }
+
 }

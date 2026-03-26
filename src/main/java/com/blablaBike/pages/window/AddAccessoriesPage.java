@@ -1,10 +1,15 @@
 package com.blablaBike.pages.window;
 
 import com.blablaBike.core.BasePage;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -40,6 +45,21 @@ type(pricePerDayField,acccessoryPrice);
                 .executeScript("return arguments[0].validity.rangeUnderflow;", pricePerDayField);
 
         assertTrue(rangeUnderflow);
+
+        return this;
+    }
+
+
+    public  AddAccessoriesPage verifyAllertInDisplay() {
+
+
+        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(nameField));
+
+        String color = element.getCssValue("color");
+        Assertions.assertEquals("rgba(0, 0, 0, 1)", color);
+
+
 
         return this;
     }

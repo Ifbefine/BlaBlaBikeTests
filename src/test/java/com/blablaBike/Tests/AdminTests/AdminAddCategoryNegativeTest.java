@@ -37,7 +37,7 @@ public class AdminAddCategoryNegativeTest extends TestBase {
         new AdminDashboardPage(driver).clickOnAdminLink();
         new AddCategoryPage(driver).clickOnAddCategoryLink().EnterCategoryData("Kids bike","https://kidsbike-pro.com")
                 .clickOnCreateCategoryButton()
-               // .verifyAllertInDisplay()
+                .verifyAllertInDisplay()
         ;
 
     }
@@ -50,7 +50,7 @@ public class AdminAddCategoryNegativeTest extends TestBase {
         new AddCategoryPage(driver).clickOnAddCategoryLink()
                 .enterParametrCategoryData(categoryName,categoryUrl)
                 .clickOnCreateCategoryButton()
-        // .verifyAllertInDisplay()
+                .verifyAllertInDisplay()
         ;
 
     }

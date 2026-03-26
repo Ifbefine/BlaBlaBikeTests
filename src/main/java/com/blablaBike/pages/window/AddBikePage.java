@@ -27,12 +27,12 @@ public class AddBikePage extends BasePage {
     WebElement imageInput;
 
 
-    public AddBikePage enterDataBike(String brand, String model, String description, String price, String url) {
+    public AddBikePage enterDataBike(String brand, String model, String description, String price) {
         type(brandInput, brand);
         type(modelInput, model);
         type(descriptionInput, description);
         type(priceInput, price);
-        type(imageInput, url);
+
         return this;
 
     }

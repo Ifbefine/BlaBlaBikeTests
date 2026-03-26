@@ -2,12 +2,16 @@ package com.blablaBike.pages;
 
 import com.blablaBike.core.BasePage;
 import com.blablaBike.pages.window.AddBikePage;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class AddCategoryPage extends BasePage {
 
@@ -16,7 +20,7 @@ public class AddCategoryPage extends BasePage {
     }
 
 
-    @FindBy(xpath = "//a[normalize-space()='Add Category']")
+    @FindBy(xpath = "//a[normalize-space()='Categories']")
     WebElement addCategoryButton;
 
     public AddCategoryPage clickOnAddCategoryLink() {
@@ -41,6 +45,7 @@ public class AddCategoryPage extends BasePage {
     @FindBy(xpath = "//button[normalize-space()='Create Category']")
     WebElement createCategoryButton;
     public AddCategoryPage clickOnCreateCategoryButton() {
+        pause(500);
         click(createCategoryButton);
 
         return this;
@@ -69,6 +74,22 @@ public class AddCategoryPage extends BasePage {
 
         type(categoryNameField, categoryName);
         type(categoryUrlField, categoryUrl);
+
+        return this;
+    }
+
+
+    public AddCategoryPage verifyAllertInDisplay() {
+        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(categoryNameField));
+        WebElement element2 = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(categoryUrlField));
+
+
+        String color = element.getCssValue("color");
+        Assertions.assertEquals("rgba(0, 0, 0, 1)", color);
+
+
 
         return this;
     }

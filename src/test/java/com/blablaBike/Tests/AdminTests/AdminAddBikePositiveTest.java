@@ -40,7 +40,7 @@ public class AdminAddBikePositiveTest extends TestBase {
         new AdminDashboardPage(driver).clickOnAdminLink()
                 .clickOnAddBikeButton()
         ;
-        new AddBikePage(driver).enterDataBike("TEST","Cross Classico Pro ","Bike for Urban ","220","https://surl.li/jtxuxr")
+        new AddBikePage(driver).enterDataBike("TEST","TEST ","Bike for Urban ","220")
                 .selectBikeCategory()
                 .clickOnSaveButton()
         ;

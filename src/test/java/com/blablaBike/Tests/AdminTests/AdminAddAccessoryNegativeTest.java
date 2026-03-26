@@ -42,7 +42,7 @@ public class AdminAddAccessoryNegativeTest extends TestBase {
         new AccessoriesPage(driver).clickOnAddAccessoryButton();
         new AddAccessoriesPage(driver).enterAccessoryData("Helmet","4")
                 .clickOnAccessorySaveButton()
-                // .verifyAllertInDisplay()
+                 .verifyAllertInDisplay()
         ;
 
     }
@@ -55,10 +55,8 @@ public class AdminAddAccessoryNegativeTest extends TestBase {
 
         new AdminDashboardPage(driver).clickOnAdminLink().clickOnAccessoriesLink();
         new AccessoriesPage(driver).clickOnAddAccessoryButton();
-        new AddAccessoriesPage(driver).enterAccessoryData(accessoriesName,accessoryPrice).clickOnAccessorySaveButton();
-        new AccessoriesPage(driver).verifyAddAccessory()
-        //        .verifyAllertInDislay()
-        ;
+        new AddAccessoriesPage(driver).enterAccessoryData(accessoriesName,accessoryPrice).clickOnAccessorySaveButton().verifyAllertInDisplay();
+        //new AccessoriesPage(driver).verifyAddAccessory();
 
     }
 

@@ -106,6 +106,13 @@ public class RegistrationPage extends BasePage {
     }
 
 
+    public RegistrationPage allertDisplayInvalidInputField() {
 
+        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(alertPassword));
 
+        String color = element.getCssValue("color");
+        Assertions.assertEquals("lab(55.4814 75.0732 48.8528)", color);
+        return this;
+    }
 }

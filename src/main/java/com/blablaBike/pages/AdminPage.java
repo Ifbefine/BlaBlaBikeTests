@@ -6,26 +6,38 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
+
 public class AdminPage extends BasePage {
 
-    private final By activeOrdersBadge = By.xpath("//button[contains(., 'Active Orders')]//span");
-    private final By activeOrdersTab = By.xpath("//button[contains(., 'Active Orders')]");
-    private final By ordersContainer = By.cssSelector("section.grid");
+    // Локаторы на основе скриншота верстки
+    private final By activeOrdersCount = By.xpath("//p[text()='Active Orders']/following-sibling::h2");
+    private final By adminLink = By.xpath("//a[@href='/admin']");
+    // Секция со списком заказов (нижняя часть экрана)
+    private final By ordersSection = By.cssSelector("div.overflow-y-auto");
+    private final By orderItems = By.cssSelector("div.overflow-y-auto > div");
 
     public AdminPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getOrdersCountText() {
-        WebElement badge = wait.until(ExpectedConditions.visibilityOfElementLocated(activeOrdersBadge));
-        return badge.getText();
+    public boolean isAdminLinkVisible() {
+        try {
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(adminLink)).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    public void clickActiveOrdersTab() {
-        wait.until(ExpectedConditions.elementToBeClickable(activeOrdersTab)).click();
+    public String getOrdersCountText() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(activeOrdersCount)).getText();
+    }
+
+    public List<WebElement> getOrderElements() {
+        return driver.findElements(orderItems);
     }
 
     public WebElement getOrdersContainer() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(ordersContainer));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(ordersSection));
     }
 }

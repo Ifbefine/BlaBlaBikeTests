@@ -29,7 +29,7 @@ public class TestBase {
         // ключ именно "baseUrl" (регистр важен!)
         this.baseUrl = props.getProperty("baseUrl");
         if (baseUrl == null || baseUrl.isEmpty()) {
-            baseUrl = "https://config.properties";
+            baseUrl = "https://blablabike-arx6.vercel.app/";
         }
 
         WebDriver originalDriver = new ChromeDriver();

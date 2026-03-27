@@ -1,6 +1,10 @@
 package com.blablaBike.pages;
 
 import com.blablaBike.core.BasePage;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -188,5 +192,14 @@ public class CatalogPage extends BasePage {
     public boolean noBikesWithStatus(String statusName) {
         return getAllBikeStatuses().stream()
                 .noneMatch(s -> s.equalsIgnoreCase(statusName));
+    }
+
+
+
+//это для выбора статуса велика в каталоге
+    public void filterByStatus(String status) {
+        WebElement statusSelect = driver.findElement(By.xpath("//select[contains(., 'Any status')]"));
+        Select select = new Select(statusSelect);
+        select.selectByVisibleText(status); // Передаем "In Repair"
     }
 }

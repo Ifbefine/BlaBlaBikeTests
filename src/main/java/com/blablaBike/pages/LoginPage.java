@@ -32,6 +32,8 @@ public LoginPage(WebDriver driver) {
 
 
     public void enterEmail(String email) {
+        wait.until(ExpectedConditions.visibilityOf(emailField));
+        emailField.sendKeys(email);
         type(emailField, email);
         //emailField.sendKeys(email);
 

@@ -36,7 +36,6 @@ public class TestBase {
         WebDriver originalDriver = new ChromeDriver();
         MyListener listener = new MyListener();
         this.driver = new EventFiringDecorator<>(listener).decorate(originalDriver);
-
         this.driver.manage().window().maximize();
 
 

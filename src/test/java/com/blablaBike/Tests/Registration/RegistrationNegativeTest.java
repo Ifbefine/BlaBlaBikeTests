@@ -66,6 +66,15 @@ RegistrationPage registrationPage;
     }
 
 
+    @Test
+    public void registrationNegativeWithLongNameTest()
+    {
+        new RegistrationPage(driver).clickOnButtonSignUp().enterUserData("ABCDEFGHIJKLMNOPQRABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+                "mariiatest16@gmail.com","Test1234$").clickOnSubmitButtonSignUp().allertDisplayInvalidInputField();
+
+    }
+
+
 
 
 

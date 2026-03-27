@@ -1,17 +1,13 @@
 package com.blablaBike.core;
 
 
-
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,19 +23,19 @@ public abstract class BasePage {
     protected SoftAssertions softly;
     protected Actions actions;
     protected WebDriverWait wait;
+    @FindBy(css = "div.text-red-500")
+    WebElement alertMessage;
+
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-
-
+        
         PageFactory.initElements(driver, this);
         this.js = (JavascriptExecutor) driver;
         this.softly = new SoftAssertions();
         this.actions = new Actions(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
-
 
     public void click(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
@@ -53,8 +49,6 @@ public abstract class BasePage {
         }
     }
 
-
-
     public void scrollWithJS(int x, int y) {
         js.executeScript("window.scrollBy(" + x + "," + y + ")");
     }
@@ -62,8 +56,6 @@ public abstract class BasePage {
     public void clickWithJS(WebElement element) {
         js.executeScript("arguments[0].click();", element);
     }
-
-
 
     public boolean isElementVisible(WebElement element) {
         try {
@@ -77,16 +69,15 @@ public abstract class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(seconds))
                 .until(ExpectedConditions.visibilityOf(element));
     }
-    protected boolean isContainsText(String text, WebElement element)
-    {
+
+    protected boolean isContainsText(String text, WebElement element) {
         return element.getText().contains(text);
     }
+
     public boolean shouldHaveText(WebElement element, String text, int seconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(seconds))
                 .until(ExpectedConditions.textToBePresentInElement(element, text));
     }
-
-
 
     public void pause(int millis) {
         try {
@@ -99,8 +90,6 @@ public abstract class BasePage {
     public String getDomAttribute(WebElement element, String attribute) {
         return element.getDomAttribute(attribute);
     }
-
-
 
     public void verifyLink(String url) {
         try {
@@ -119,14 +108,9 @@ public abstract class BasePage {
         }
     }
 
-
     public void assertAll() {
         softly.assertAll();
     }
-
-
-    @FindBy(css = "div.text-red-500")
-    WebElement alertMessage;
 
     public String getAlertColor() {
         return alertMessage.getCssValue("color");

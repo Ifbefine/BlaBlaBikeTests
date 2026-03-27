@@ -23,7 +23,7 @@ public class EmailSensetivityTest extends TestBase {
 
     }
     @Test
-    @Tag("to-do/NOT-Working")
+    @Tag("Ok")
     public void emailSensetivityTest(){
         loginPage.enterEmail("TesT123456789@GM.COM");
         loginPage.enterPassword("Test123456789@");

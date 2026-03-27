@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class LoginPage extends BasePage {
+  
+
 
     @FindBy(id = "email")
     WebElement emailField;
@@ -27,10 +29,16 @@ public class LoginPage extends BasePage {
 
     public void enterEmail(String email) {
         type(emailField, email);
+        wait.until(ExpectedConditions.visibilityOf(emailField));
+        emailField.sendKeys(email);
+        type(emailField, email);
+        //emailField.sendKeys(email);
+
     }
 
     public void enterPassword(String password) {
         type(passwordField, password);
+        //passwordField.sendKeys(password);
     }
 
     public void clickLoginButton() {
@@ -41,8 +49,6 @@ public class LoginPage extends BasePage {
         enterEmail(email);
         enterPassword(password);
         clickLoginButton();
-
-        // Ждем, пока мы попадем хоть куда-то (в админку или профиль пользователя)
         wait.until(ExpectedConditions.or(
                 ExpectedConditions.urlContains("admin"),
                 ExpectedConditions.urlContains("user-profile")

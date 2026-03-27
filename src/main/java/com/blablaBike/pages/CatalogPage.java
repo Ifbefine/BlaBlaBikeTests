@@ -5,8 +5,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
@@ -79,7 +81,7 @@ public class CatalogPage extends BasePage {
     @FindBy(xpath = "//select[contains(@class,'bg-gray-100')]")
     private WebElement showSelect;
 
-    @FindBy(xpath = "//option[@value='3']")
+    @FindBy(xpath = "//option[@value='Все']")
     private WebElement showSelect12;
 
     @FindBy(xpath = "//*[contains(text(),'TEST')]")
@@ -92,11 +94,49 @@ public class CatalogPage extends BasePage {
     }
 
     public boolean isBikeAdded() {
-        scrollWithJS(0, 1000);
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOf(addedBikeBrand));
-        return addedBikeBrand.isDisplayed();
+        By bikeLocator = By.xpath("//*[text()='TEST']");;
+
+        // первая попытка поиска
+        for (int i = 0; i < 5; i++) {
+            if (!driver.findElements(bikeLocator).isEmpty()) {
+                WebElement bike = driver.findElement(bikeLocator);
+                js.executeScript("arguments[0].scrollIntoView({block:'center'});", bike);
+                return bike.isDisplayed();
+            }
+
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            pause(500);
+        }
+
+        // прокручиваем к select
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", showSelect);
+        wait.until(ExpectedConditions.visibilityOf(showSelect));
+
+        Select select = new Select(showSelect);
+        select.selectByVisibleText("All");
+
+        // ждём, что значение реально выбралось
+        wait.until(driver ->
+                new Select(showSelect).getFirstSelectedOption().getText().trim().equals("All")
+        );
+
+        // после выбора "Все" начинаем поиск заново
+        for (int i = 0; i < 8; i++) {
+            if (!driver.findElements(bikeLocator).isEmpty()) {
+                WebElement bike = driver.findElement(bikeLocator);
+                js.executeScript("arguments[0].scrollIntoView({block:'center'});", bike);
+                wait.until(ExpectedConditions.visibilityOf(bike));
+                return true;
+            }
+
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            pause(500);
+        }
+
+        return false;
+
     }
+
 
     public CatalogPage verifyAddBike() {
         scrollWithJS(0, 3000);

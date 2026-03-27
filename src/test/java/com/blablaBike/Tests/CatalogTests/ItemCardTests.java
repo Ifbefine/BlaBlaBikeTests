@@ -7,6 +7,7 @@ import com.blablaBike.pages.CatalogPage;
 import com.blablaBike.pages.ItemPage;
 import com.blablaBike.utils.CatalogHelper;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ItemCardTests extends TestBase {

@@ -156,6 +156,13 @@ public class ItemPage extends BasePage {
         return duration.getText();
     }
 
+    @FindBy(css = "your-selector-for-status")
+    private WebElement bikeStatus;
+
+    public String getBikeStatus() {
+        return wait.until(ExpectedConditions.visibilityOf(bikeStatus)).getText();
+    }
+
 
 
 }

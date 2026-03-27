@@ -1,4 +1,4 @@
-package com.blablaBike.Tests.Booking.Positive;
+package com.blablaBike.Tests.Booking.Negative;
 
 import com.blablaBike.core.TestBase;
 import com.blablaBike.pages.BookingPage;
@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BookingBikeWithAccessoriesTest extends TestBase {
+public class MaxRentalPeriodTest extends TestBase {
     LoginPage loginPage;
     CatalogPage catalogPage;
     BookingPage bookingPage;
@@ -59,11 +59,8 @@ public class BookingBikeWithAccessoriesTest extends TestBase {
         bookingPage.fillContactDetails("Vova", "Testov", "vova@example.com", "+49123456789");
 
         // 2. Даты
-        bookingPage.entryDate("25", "03", "2026",
-                "15", "04", "2026");
-        // 3. Выбор аксессуаров
-        bookingPage.selectAllAccessories();
-        Thread.sleep(1000);
+        bookingPage.entryDate("29", "03", "2026",
+                "31", "05", "2026");
 
         // 3. Карта
         bookingPage.fillPaymentDetails("4444555566667777", "12/28", "123");
@@ -75,4 +72,3 @@ public class BookingBikeWithAccessoriesTest extends TestBase {
         Thread.sleep(10000);
     }
 }
-

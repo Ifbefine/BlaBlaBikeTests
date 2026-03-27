@@ -61,7 +61,7 @@ public class BookBikeTest extends TestBase {
 
         // 2. Даты
         bookingPage.entryDate("25", "03", "2026",
-                "26", "03", "2026");
+                "02", "04", "2026");
 
         // 3. Карта
         bookingPage.fillPaymentDetails("4444555566667777", "12/28", "123");
@@ -70,6 +70,6 @@ public class BookBikeTest extends TestBase {
 
         //
         bookingPage.clickConfirmAndPay();
-        Thread.sleep(10000);
+        Thread.sleep(500);
     }
 }

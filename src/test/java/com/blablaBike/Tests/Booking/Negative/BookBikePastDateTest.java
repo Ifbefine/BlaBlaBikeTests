@@ -13,6 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 public class BookBikePastDateTest extends TestBase {
     LoginPage loginPage;
     CatalogPage catalogPage;
@@ -48,7 +51,7 @@ public class BookBikePastDateTest extends TestBase {
                 .until(ExpectedConditions.urlContains("catalog"));
 
     }
-    @Tag("NOT WORKING/bug")
+    @Tag("OK")
     @Test
     public void BookBikePastDateTest() throws InterruptedException {
         Thread.sleep(2000);
@@ -71,30 +74,32 @@ public class BookBikePastDateTest extends TestBase {
         bookingPage.clickConfirmAndPay();
         Thread.sleep(10000);
     }
-    @Tag("NOT WORKING/bug")
     @Test
-    public void BookBikeFutureDateTest() throws InterruptedException {
+    public void BookBikePastDateValidationTest() throws InterruptedException {
         Thread.sleep(2000);
         catalogPage.openSecondItem();
         Thread.sleep(2000);
         bookingPage.clickOnBookingBtn();
-        // 1. Контакты
+
         bookingPage.fillContactDetails("Vova", "Testov", "vova@example.com", "+49123456789");
 
-        // 2. Даты
-        bookingPage.entryDate("21", "03", "2027",
-                "21", "03", "2025");
 
-        // 3. Карта
+        bookingPage.entryDate("21", "03", "2027", "21", "03", "2025");
         bookingPage.fillPaymentDetails("4444555566667777", "12/28", "123");
 
-        Thread.sleep(5000);
+        Thread.sleep(300);
 
-        // 4. Финал
-        bookingPage.clickConfirmAndPay();
-        Thread.sleep(10000);
+
+        boolean isBtnActive = bookingPage.isConfirmButtonEnabled();
+        assertFalse(isBtnActive, "Брешь в безопасности! Кнопка активна при кривых датах.");
+
+
+        String btnText = bookingPage.getConfirmButtonText();
+        assertEquals("SELECT RENTAL DATES", btnText, "Кнопка не поменяла текст на Select Rental Dates");
+
+        System.out.println("Тест прошел: кнопка заблокирована, текст корректен.");
     }
-    @Tag("NOT WORKING/bug")
+    @Tag("OK")
     @Test
     public void BookBikePastDateInFutureTest() throws InterruptedException {
         Thread.sleep(2000);

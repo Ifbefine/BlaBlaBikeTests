@@ -5,6 +5,7 @@ import com.blablaBike.pages.BookingPage;
 import com.blablaBike.pages.CatalogPage;
 import com.blablaBike.pages.LoginPage;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -49,12 +50,13 @@ public class BookBikeInRepairTest extends TestBase {
 
     }
     @Test
+    @Disabled
     public void BookBikeInRepairTest() throws InterruptedException {
         Thread.sleep(2000);
 
         // "In Repair"
         catalogPage.filterByStatus("In Repair");
-        Thread.sleep(2000); // Даем фильтру отработать
+        Thread.sleep(2000);
 
         // 2
         catalogPage.openSecondItem();

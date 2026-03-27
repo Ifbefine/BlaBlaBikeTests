@@ -102,8 +102,26 @@ public class BookingPage extends BasePage {
         cardExpiryInput.sendKeys(expiry);
         cardCvcInput.sendKeys(cvc);
     }
+    public void multiClickConfirm(int count) {
+        wait.until(ExpectedConditions.elementToBeClickable(confirmPayBtn));
+        for (int i = 0; i < count; i++) {
+            confirmPayBtn.click();
+            System.out.println("Отправлен клик №" + (i + 1));
+        }
+    }
 
     public void clickConfirmAndPay() {
         confirmPayBtn.click();
     }
+
+    // Самый надежный путь: кнопка внутри div, где заголовок "Order Summary"
+    @FindBy(xpath = "//h2[text()='Order Summary']/following-sibling::button")
+    private WebElement confirmPayBtnIfInactive;
+    public boolean isConfirmButtonEnabled() {
+        return confirmPayBtnIfInactive.isEnabled();
+    }
+    public String getConfirmButtonText() {
+        return confirmPayBtnIfInactive.getText();
+    }
 }
+

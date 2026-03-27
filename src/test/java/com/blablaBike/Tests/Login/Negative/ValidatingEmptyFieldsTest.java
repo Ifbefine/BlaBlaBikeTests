@@ -5,25 +5,23 @@ import com.blablaBike.pages.LoginPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ValidatingEmptyFieldsTest extends TestBase {
-    WebDriver driver;
+
     LoginPage loginPage;
+
     @BeforeEach
-    public void setup(){
-        driver = new ChromeDriver();
-        driver.get("https://blablabike-arx6.vercel.app/login");
+    public void setup() {
+        // Драйвер уже инициализирован в TestBase, просто используем его
         loginPage = new LoginPage(driver);
-
-
-
+        driver.get("https://blablabike-arx6.vercel.app/login");
     }
+
     @Test
-    @Tag("OK")
-    public void ValidatingEmptyFieldsTest(){
+    @Tag("Negative")
+    public void testEmptyFieldsValidation() {
         loginPage.clickLoginButton();
+        // Просто проверяем, что метод не упал при поиске ошибки
         loginPage.getEmailErrorMessage();
     }
 }

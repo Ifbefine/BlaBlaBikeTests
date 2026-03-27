@@ -214,5 +214,25 @@ public class ItemCardTests extends TestBase {
         assertThat(itemPage.getDuration()).contains("Day");
     }
 
+    @Test
+    public void bikeInfoDisplayedAndValid() {
+        HomePage homePage = new HomePage(driver);
+        homePage.openCatalog();
+
+        CatalogHelper helper = new CatalogHelper(driver);
+        helper.openFirstAvailableItem();
+
+        ItemPage itemPage = new ItemPage(driver);
+
+        assertThat(itemPage.isOrderSummaryDisplayed()).isTrue();
+
+        assertThat(itemPage.getBikeName()).isNotEmpty();
+        assertThat(itemPage.getCategory()).isNotEmpty();
+        assertThat(itemPage.getRentalRate()).isNotEmpty();
+        assertThat(itemPage.getTotalPrice()).isNotEmpty();
+    }
+
+
+
 
 }

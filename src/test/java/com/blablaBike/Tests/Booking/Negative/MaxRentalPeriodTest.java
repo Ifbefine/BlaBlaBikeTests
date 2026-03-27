@@ -69,6 +69,6 @@ public class MaxRentalPeriodTest extends TestBase {
 
         //
         bookingPage.clickConfirmAndPay();
-        Thread.sleep(10000);
+        bookingPage.verifyAnyErrorAlertVisible();
     }
 }

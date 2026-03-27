@@ -70,6 +70,6 @@ public class DoubleBookingRaceConditionTest extends TestBase {
         //
         bookingPage.multiClickConfirm(5);
 
-        Thread.sleep(10000);
+
     }
 }

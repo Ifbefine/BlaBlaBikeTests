@@ -1,12 +1,17 @@
 package com.blablaBike.pages;
 
 import com.blablaBike.core.BasePage;
+import com.blablaBike.pages.window.AddAccessoriesPage;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BookingPage extends BasePage {
 
@@ -122,6 +127,22 @@ public class BookingPage extends BasePage {
     }
     public String getConfirmButtonText() {
         return confirmPayBtnIfInactive.getText();
+    }
+
+    @FindBy(xpath = "//div[contains(@class, 'text-red-600')]")
+    private WebElement commonErrorAlert;
+    public BookingPage verifyAnyErrorAlertVisible() {
+        // Ждем появления любой красной плашки 10 секунд
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(commonErrorAlert));
+
+        // Проверяем, что она реально отображается
+        Assertions.assertTrue(commonErrorAlert.isDisplayed(), "ОШИБКА: Красное уведомление не появилось!");
+
+        // Выведем текст в консоль, просто чтобы ты видел, какая именно ошибка прилетела
+        System.out.println("Выскочил алерт с текстом: " + commonErrorAlert.getText());
+
+        return this;
     }
 }
 

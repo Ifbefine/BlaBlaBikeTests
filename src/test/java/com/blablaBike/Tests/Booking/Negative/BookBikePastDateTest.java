@@ -4,6 +4,7 @@ import com.blablaBike.core.TestBase;
 import com.blablaBike.pages.BookingPage;
 import com.blablaBike.pages.CatalogPage;
 import com.blablaBike.pages.LoginPage;
+import com.blablaBike.pages.window.AddAccessoriesPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,8 @@ public class BookBikePastDateTest extends TestBase {
     CatalogPage catalogPage;
     BookingPage bookingPage;
 
+    AddAccessoriesPage addAccessoriesPage;
+
     @BeforeEach
     public void setUp() {
 
@@ -31,6 +34,7 @@ public class BookBikePastDateTest extends TestBase {
         loginPage = new LoginPage(driver);
         catalogPage = new CatalogPage(driver);
         bookingPage = new BookingPage(driver);
+        addAccessoriesPage = new AddAccessoriesPage(driver);
 
         driver.get("https://blablabike-arx6.vercel.app/login");
 
@@ -72,7 +76,8 @@ public class BookBikePastDateTest extends TestBase {
 
         //  Финал
         bookingPage.clickConfirmAndPay();
-        Thread.sleep(10000);
+
+        bookingPage.verifyAnyErrorAlertVisible();
     }
     @Test
     public void BookBikePastDateValidationTest() throws InterruptedException {
@@ -98,6 +103,8 @@ public class BookBikePastDateTest extends TestBase {
         assertEquals("SELECT RENTAL DATES", btnText, "Кнопка не поменяла текст на Select Rental Dates");
 
         System.out.println("Тест прошел: кнопка заблокирована, текст корректен.");
+        bookingPage.verifyAnyErrorAlertVisible();
+
     }
     @Tag("OK")
     @Test
@@ -120,7 +127,8 @@ public class BookBikePastDateTest extends TestBase {
 
         // 4. Финал
         bookingPage.clickConfirmAndPay();
-        Thread.sleep(10000);
+        bookingPage.verifyAnyErrorAlertVisible();
+
     }
 
     }

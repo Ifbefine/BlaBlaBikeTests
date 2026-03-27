@@ -156,11 +156,12 @@ public class ItemPage extends BasePage {
         return duration.getText();
     }
 
-    @FindBy(css = "your-selector-for-status")
+    @FindBy(xpath = "//div[contains(@class,'rounded-full') and contains(@class,'uppercase')]")
     private WebElement bikeStatus;
 
     public String getBikeStatus() {
-        return wait.until(ExpectedConditions.visibilityOf(bikeStatus)).getText();
+        wait.until(ExpectedConditions.visibilityOf(bikeStatus));
+        return bikeStatus.getText().trim().toUpperCase();
     }
 
 

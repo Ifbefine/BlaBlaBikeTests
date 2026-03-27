@@ -11,6 +11,6 @@ public class AdminPageHelper {
     }
 
     public void changeBikeStatusInDB(String status) {
-        System.out.println("Change bike status in DB to: " + status);
+        System.out.println("change bike status in db to: " + status);
     }
 }

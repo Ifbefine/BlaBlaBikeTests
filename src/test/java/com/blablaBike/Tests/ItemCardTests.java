@@ -232,5 +232,4 @@ public class ItemCardTests extends TestBase {
         assertThat(itemPage.getTotalPrice()).isNotEmpty();
     }
 
-
 }

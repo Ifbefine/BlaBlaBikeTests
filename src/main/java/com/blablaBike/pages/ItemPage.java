@@ -154,6 +154,4 @@ public class ItemPage extends BasePage {
         return duration.getText();
     }
 
-
-
 }

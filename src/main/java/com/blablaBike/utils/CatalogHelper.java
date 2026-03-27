@@ -17,6 +17,7 @@ public class CatalogHelper {
         this.driver = driver;
     }
 
+
     public void openFirstAvailableItem() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 

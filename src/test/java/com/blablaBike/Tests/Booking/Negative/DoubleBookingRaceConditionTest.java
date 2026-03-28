@@ -59,8 +59,8 @@ public class DoubleBookingRaceConditionTest extends TestBase {
         bookingPage.fillContactDetails("Vova", "Testov", "vova@example.com", "+49123456789");
 
         // 2. Даты
-        bookingPage.entryDate("25", "03", "2026",
-                "26", "03", "2026");
+        bookingPage.entryDate("13", "04", "2026",
+                "15", "04", "2026");
 
         // 3. Карта
         bookingPage.fillPaymentDetails("4444555566667777", "12/28", "123");
@@ -68,7 +68,7 @@ public class DoubleBookingRaceConditionTest extends TestBase {
         Thread.sleep(5000);
 
         //
-        bookingPage.multiClickConfirm(5);
+        bookingPage.multiClickConfirm(1);
 
 
     }

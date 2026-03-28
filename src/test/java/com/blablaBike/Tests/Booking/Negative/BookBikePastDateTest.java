@@ -66,8 +66,8 @@ public class BookBikePastDateTest extends TestBase {
         bookingPage.fillContactDetails("Vova", "Testov", "vova@example.com", "+49123456789");
 
         //  Даты
-        bookingPage.entryDate("21", "03", "2023",
-                "21", "03", "2024");
+        bookingPage.entryDate("21", "03", "2015",
+                "21", "03", "2016");
 
         //  Карта
         bookingPage.fillPaymentDetails("4444555566667777", "12/28", "123");

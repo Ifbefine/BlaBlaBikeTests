@@ -60,8 +60,8 @@ public class BookBikeTest extends TestBase {
         bookingPage.fillContactDetails("Vova", "Testov", "vova@example.com", "+49123456789");
 
         // 2. Даты
-        bookingPage.entryDate("25", "03", "2026",
-                "02", "04", "2026");
+        bookingPage.entryDate("15", "08", "2026",
+                "02", "09", "2026");
 
         // 3. Карта
         bookingPage.fillPaymentDetails("4444555566667777", "12/28", "123");
@@ -71,5 +71,10 @@ public class BookBikeTest extends TestBase {
         //
         bookingPage.clickConfirmAndPay();
         Thread.sleep(500);
+        driver.get("https://blablabike-arx6.vercel.app/user-profile/bookings");
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.urlContains("profile"));
+        Thread.sleep(10000);
+
     }
 }

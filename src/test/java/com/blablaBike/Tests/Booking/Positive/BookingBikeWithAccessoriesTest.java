@@ -40,7 +40,7 @@ public class BookingBikeWithAccessoriesTest extends TestBase {
                 .until(ExpectedConditions.urlContains("profile"));
 
 
-        driver.get("https://blablabike-arx6.vercel.app/catalog");
+        driver.get("https://blablabike.vercel.app/catalog");
 
 
         new WebDriverWait(driver, Duration.ofSeconds(10))

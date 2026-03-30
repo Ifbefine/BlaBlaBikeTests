@@ -17,7 +17,7 @@ public class EmailSensetivityTest extends TestBase {
     @BeforeEach
     public void setup(){
         driver = new ChromeDriver();
-        driver.get("https://blablabike-arx6.vercel.app/login");
+        driver.get("https://blablabike.vercel.app/login");
         loginPage = new LoginPage(driver);
 
 

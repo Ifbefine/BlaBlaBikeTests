@@ -34,9 +34,8 @@ public class BookBikePastDateTest extends TestBase {
         loginPage = new LoginPage(driver);
         catalogPage = new CatalogPage(driver);
         bookingPage = new BookingPage(driver);
-        addAccessoriesPage = new AddAccessoriesPage(driver);
 
-        driver.get("https://blablabike-arx6.vercel.app/login");
+        driver.get("https://blablabike.vercel.app/login");
 
         loginPage.enterEmail("test123456789@gm.com");
         loginPage.enterPassword("Test123456789@");
@@ -48,7 +47,7 @@ public class BookBikePastDateTest extends TestBase {
                 .until(ExpectedConditions.urlContains("profile"));
 
 
-        driver.get("https://blablabike-arx6.vercel.app/catalog");
+        driver.get("https://blablabike.vercel.app/catalog");
 
 
         new WebDriverWait(driver, Duration.ofSeconds(10))

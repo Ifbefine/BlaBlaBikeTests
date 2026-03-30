@@ -14,7 +14,7 @@ public class LoginTests extends TestBase {
     public void setup() {
 //        driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
-        driver.get("https://blablabike-arx6.vercel.app/login");
+        driver.get("https://blablabike.vercel.app/login");
         loginPage = new LoginPage(driver);
 
 

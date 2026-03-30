@@ -15,7 +15,7 @@ public class ValidatingEmptyFieldsTest extends TestBase {
     public void setup() {
         // Драйвер уже инициализирован в TestBase, просто используем его
         loginPage = new LoginPage(driver);
-        driver.get("https://blablabike-arx6.vercel.app/login");
+        driver.get("https://blablabike.vercel.app/login");
     }
 
     @Test

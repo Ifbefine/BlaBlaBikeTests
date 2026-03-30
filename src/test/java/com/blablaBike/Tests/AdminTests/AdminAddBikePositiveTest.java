@@ -19,7 +19,7 @@ public class AdminAddBikePositiveTest extends TestBase {
 
     @BeforeEach
     public void precondition() {
-        driver.get("https://blablabike-arx6.vercel.app/login");
+        driver.get("https://blablabike.vercel.app/login");
 
         loginPage = new LoginPage(driver);
         loginPage.enterEmail("mariadmin@gmail.com");

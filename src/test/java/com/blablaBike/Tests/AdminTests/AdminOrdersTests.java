@@ -25,7 +25,7 @@ public class AdminOrdersTests extends TestBase {
         adminPage = new AdminPage(driver);
         loginPage = new LoginPage(driver);
 
-        driver.get("https://blablabike-arx6.vercel.app/login");
+        driver.get("https://blablabike.vercel.app/login");
 
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("email")));

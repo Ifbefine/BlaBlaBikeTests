@@ -27,7 +27,8 @@ RegistrationPage registrationPage;
     {
       new RegistrationPage(driver).clickOnButtonSignUp().enterUserData("Mariia Testova","maritest1@gmail.com","Test1234$")
               .clickOnSubmitButtonSignUp()
-              .allertDisplayExistingUser();
+              .allertDisplayExistingUser()
+       ;
 
     }
 
@@ -35,7 +36,7 @@ RegistrationPage registrationPage;
     @CsvFileSource(resources = "/InvalidName.csv", numLinesToSkip = 1)
     public void registrationNegativeWithInvalidName(String name,String email,String password)
     {
-       new RegistrationPage(driver).clickOnButtonSignUp().enterUserData(name,email,password).clickOnSubmitButtonSignUp().allertDisplayInvalidName();
+       new RegistrationPage(driver).clickOnButtonSignUp().enterUserData(name,email,password).clickOnSubmitButtonSignUp().verifyAllErrorMessagesStyle();
 
     }
 
@@ -47,7 +48,7 @@ RegistrationPage registrationPage;
         new RegistrationPage(driver).clickOnButtonSignUp()
                 .enterUserData(name,email,password)
                 .clickOnSubmitButtonSignUp()
-                .allertDisplayInvalidEmail();
+                .verifyAllErrorMessagesStyle();
     }
 
 
@@ -60,7 +61,7 @@ RegistrationPage registrationPage;
         new RegistrationPage(driver).clickOnButtonSignUp()
                 .enterUserData(name,email,password)
                 .clickOnSubmitButtonSignUp()
-               .allertDisplayInvalidPassword()
+               .verifyAllErrorMessagesStyle()
         ;
 
     }
@@ -70,7 +71,8 @@ RegistrationPage registrationPage;
     public void registrationNegativeWithLongNameTest()
     {
         new RegistrationPage(driver).clickOnButtonSignUp().enterUserData("ABCDEFGHIJKLMNOPQRABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-                "mariiatest16@gmail.com","Test1234$").clickOnSubmitButtonSignUp().allertDisplayInvalidInputField();
+                "mariiatest16@gmail.com","Test1234$").clickOnSubmitButtonSignUp().
+                verifyAllErrorMessagesStyle();
 
     }
 

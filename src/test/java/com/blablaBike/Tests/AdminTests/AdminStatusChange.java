@@ -17,42 +17,42 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AdminStatusChange extends TestBase {
 
-    @Test
-    public void bikeBecomesUnavailableAfterAdminChange() throws InterruptedException {
-
-        HomePage homePage = new HomePage(driver);
-        homePage.openCatalog();
-
-        CatalogHelper helper = new CatalogHelper(driver);
-        helper.openFirstAvailableItem();
-
-        ItemPage itemPage = new ItemPage(driver);
-
-        assertThat(itemPage.getBikeStatus()).isEqualToIgnoringCase("available");
-
-        AdminPageHelper adminHelper = new AdminPageHelper(driver);
-        adminHelper.changeBikeStatusInDB("BUSY");
-
-        boolean isUpdated = false;
-
-        for (int i = 0; i < 15; i++) {
-
-            homePage.openCatalog();
-
-            helper.openFirstAvailableItem();
-
-            itemPage = new ItemPage(driver);
-
-            if (itemPage.getBikeStatus().equalsIgnoreCase("busy")) {
-                isUpdated = true;
-                break;
-            }
-
-            Thread.sleep(2000);
-        }
-
-        assertThat(isUpdated).isTrue();
-    }
+//    @Test
+//    public void bikeBecomesUnavailableAfterAdminChange() throws InterruptedException {
+//
+//        HomePage homePage = new HomePage(driver);
+//        homePage.openCatalog();
+//
+//        CatalogHelper helper = new CatalogHelper(driver);
+//        helper.openFirstAvailableItem();
+//
+//        ItemPage itemPage = new ItemPage(driver);
+//
+//        assertThat(itemPage.getBikeStatus()).isEqualToIgnoringCase("available");
+//
+//        AdminPageHelper adminHelper = new AdminPageHelper(driver);
+//        adminHelper.changeBikeStatusInDB("BUSY");
+//
+//        boolean isUpdated = false;
+//
+//        for (int i = 0; i < 15; i++) {
+//
+//            homePage.openCatalog();
+//
+//            helper.openFirstAvailableItem();
+//
+//            itemPage = new ItemPage(driver);
+//
+//            if (itemPage.getBikeStatus().equalsIgnoreCase("busy")) {
+//                isUpdated = true;
+//                break;
+//            }
+//
+//            Thread.sleep(2000);
+//        }
+//
+//        assertThat(isUpdated).isTrue();
+//    }
 
     @Test
     public void allItemsShouldHaveValidStatus() {

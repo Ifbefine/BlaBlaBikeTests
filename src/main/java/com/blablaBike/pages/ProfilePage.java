@@ -19,7 +19,7 @@ public class ProfilePage extends BasePage {
     }
 
 
-    @FindBy(css = "h2.text-xl.font-semibold")
+    @FindBy(css = ".text-xl.font-semibold")
     WebElement titleName;
 
     public ProfilePage verifyUserName(String userName) {

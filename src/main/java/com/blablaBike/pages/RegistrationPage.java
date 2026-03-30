@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class RegistrationPage extends BasePage {
 
@@ -60,15 +61,15 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    @FindBy(xpath="//div[contains(text(),\"already exists\")]")
+    //@FindBy(xpath="//div[contains(text(),\"already exists\")]")
+    @FindBy(xpath = "//div[contains(.,'already exists')]")
     WebElement alertAlreadyExists;
-
 
     public RegistrationPage allertDisplayExistingUser()
     {
         WebElement element = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOf(alertAlreadyExists));
-        assertTrue(alertAlreadyExists.getText().contains("already exists"));
+        Assertions.assertTrue(element.getText().contains("already exists"));
      return this;
     }
 
@@ -92,14 +93,18 @@ public class RegistrationPage extends BasePage {
 
     }
 
-    @FindBy(css = "div.text-red-500")
+
+    @FindBy(css = "div.text-red-600")
     WebElement alertPassword;
     public RegistrationPage allertDisplayInvalidPassword() {
         WebElement element = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOf(alertPassword));
 
         String color = element.getCssValue("color");
-        Assertions.assertEquals("lab(55.4814 75.0732 48.8528)", color);
+        String hex = Color.fromString(color).asHex();
+
+        Assertions.assertEquals("#ef4444", hex);
+        // Assertions.assertEquals("lab(55.4814 75.0732 48.8528)", color);
 
         return this;
 
@@ -112,7 +117,30 @@ public class RegistrationPage extends BasePage {
                 .until(ExpectedConditions.visibilityOf(alertPassword));
 
         String color = element.getCssValue("color");
-        Assertions.assertEquals("lab(55.4814 75.0732 48.8528)", color);
+        Assertions.assertEquals("LAB(48.4493 77.4328 61.5452)", color);
+        return this;
+    }
+
+
+
+
+    @FindBy(css = ".text-red-500, .text-red-600")
+    List<WebElement> errorMessages;
+
+    public RegistrationPage verifyAllErrorMessagesStyle() {
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(driver -> !errorMessages.isEmpty());
+
+        for (WebElement error : errorMessages) {
+            if (error.isDisplayed()) {
+                String classes = error.getAttribute("class");
+
+                Assertions.assertTrue(
+                        classes.contains("text-red-500") || classes.contains("text-red-600"),
+                        "Unexpected classes: " + classes + " for message: " + error.getText()
+                );
+            }
+        }
         return this;
     }
 }

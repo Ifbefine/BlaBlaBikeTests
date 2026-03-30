@@ -56,11 +56,18 @@ public class LoginPage extends BasePage {
     }
 
     public String getEmailErrorMessage() {
-        WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement errorElement = shortWait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[contains(text(),'Invalid email address')]")
+        
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+
+        WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("div.text-red-600")
         ));
-        return errorElement.getText();
+
+        String text = errorElement.getText();
+
+
+        return text.replace("⚠️", "").trim();
     }
 
     public String getPasswordInputType() {

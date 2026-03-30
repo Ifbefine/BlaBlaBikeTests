@@ -2,6 +2,7 @@ package com.blablaBike.Tests.Login.Negative;
 
 import com.blablaBike.core.TestBase;
 import com.blablaBike.pages.LoginPage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,7 @@ public class ValidatingEmptyFieldsTest extends TestBase {
     public void testEmptyFieldsValidation() {
         loginPage.clickLoginButton();
         // Просто проверяем, что метод не упал при поиске ошибки
-        loginPage.getEmailErrorMessage();
+        String error = loginPage.getEmailErrorMessage();
+        Assertions.assertTrue(error.contains("Invalid email address"));;
     }
 }

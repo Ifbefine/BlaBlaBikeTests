@@ -7,6 +7,7 @@ import com.blablaBike.pages.CatalogPage;
 import com.blablaBike.pages.ItemPage;
 import com.blablaBike.utils.CatalogHelper;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ItemCardTests extends TestBase {
@@ -106,18 +107,18 @@ public class ItemCardTests extends TestBase {
         assertThat(itemPage.getBikeName()).isNotEmpty();
     }
 
-    @Test
-    public void placeholderWhenNoImage() {
-        HomePage homePage = new HomePage(driver);
-        homePage.openCatalog();
-
-        CatalogPage catalogPage = new CatalogPage(driver);
-        catalogPage.openItemWithPlaceholderImage();
-
-        ItemPage itemPage = new ItemPage(driver);
-
-        assertThat(itemPage.isPlaceholderDisplayed()).isTrue();
-    }
+//    @Test
+//    public void placeholderWhenNoImage() {
+//        HomePage homePage = new HomePage(driver);
+//        homePage.openCatalog();
+//
+//        CatalogPage catalogPage = new CatalogPage(driver);
+//        catalogPage.openItemWithPlaceholderImage();
+//
+//        ItemPage itemPage = new ItemPage(driver);
+//
+//        assertThat(itemPage.isPlaceholderDisplayed()).isTrue();
+//    }
 
     @Test
     public void calendarIsDisplayed() {

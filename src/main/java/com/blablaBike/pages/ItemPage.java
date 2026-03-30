@@ -156,6 +156,14 @@ public class ItemPage extends BasePage {
         return duration.getText();
     }
 
+    @FindBy(xpath = "//div[contains(@class,'rounded-full') and contains(@class,'uppercase')]")
+    private WebElement bikeStatus;
+
+    public String getBikeStatus() {
+        wait.until(ExpectedConditions.visibilityOf(bikeStatus));
+        return bikeStatus.getText().trim().toUpperCase();
+    }
+
 
 
 }

@@ -2,6 +2,7 @@ package com.blablaBike.pages.window;
 
 import com.blablaBike.core.BasePage;
 import org.checkerframework.checker.units.qual.A;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -78,6 +79,32 @@ WebElement catalogButton;
         return this;
     }
 
+    public AddBikePage verifyValidationMessagesForEmptyRequiredFields(String brand, String model, String price) {
+        if (brand == null || brand.isBlank()) {
+            Assertions.assertFalse(
+                    brandInput.getAttribute("validationMessage").isEmpty(),
+                    "Brand field should show validation message"
+            );
+        }
+
+        if (model == null || model.isBlank()) {
+            Assertions.assertFalse(
+                    modelInput.getAttribute("validationMessage").isEmpty(),
+                    "Model field should show validation message"
+            );
+        }
+
+        if (price == null || price.isBlank()) {
+            Assertions.assertFalse(
+                    priceInput.getAttribute("validationMessage").isEmpty(),
+                    "Price field should show validation message"
+            );
+        }
+
+        return this;
+    }
+
+
     public AddBikePage enterInvalidDataAddBike(String brand, String model,String price) {
 
        type(brandInput, brand);
@@ -85,4 +112,8 @@ WebElement catalogButton;
        type(priceInput, price);
         return this;
     }
+
+
+
+
 }

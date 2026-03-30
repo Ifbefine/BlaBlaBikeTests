@@ -49,8 +49,8 @@ public class AdminAddCategoryNegativeTest extends TestBase {
         new AdminDashboardPage(driver).clickOnAdminLink();
         new AddCategoryPage(driver).clickOnAddCategoryLink()
                 .enterParametrCategoryData(categoryName,categoryUrl)
-                .clickOnCreateCategoryButton()
-                .verifyAllertInDisplay()
+               // .clickOnCreateCategoryButton()
+               .verifyAllertInDisplay()
         ;
 
     }

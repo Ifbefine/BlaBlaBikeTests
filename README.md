@@ -51,7 +51,7 @@ Step 1: Launch Frontend (Developer Website)
 3. Launch locally: npm run dev
 4. Open in browser: http://localhost:3000
 
-#### Шаг 2: Запуск QA Automation (Этот проект)
+Step 2: Launch QA Automation (This Project)
 1. Clone the test repository: git clone https://github.com/Ifbefine/BlaBlaBikeTests.git
 2. Configuration: Ensure that the correct baseUrl=http://localhost:3000 is specified in the src/test/resources/config.properties file.
 3. Launch: Open the project in IntelliJ IDEA and run the tests from the src/test/java/com/blablaBike/Tests/ folder.

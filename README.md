@@ -1,19 +1,19 @@
 ﻿# 🚲 BlaBlaBikeTests Test Bench Application
 
-**BlaBlaBike** — сервис для поиска, выбора и быстрого бронирования велосипедов
+**BlaBlaBike** - a service for finding, selecting, and quickly booking bicycles.
 
 ---
 
-### 👥 Команда проекта
+### 👥 Project team
 
-| Роль | Участники |
+| Role | Participants |
 | :--- | :--- |
 | **Developers** | Dumitru Gangan, Vladyslav Kravchenko, Dmitrii Evdokimov, Kateryna Matvieieva, Stepan Serbin |
 | **QA Engineers** | Dariia Boiko, Daryna Suk, Vladimir Dinu, Hanna Kozlianska |
 
 ---
 
-### 🛠 Стек технологий (Tech Stack)
+### 🛠 Tech Stack
 
 * **Core:** Java 21 + Maven
 * **UI:** Selenium WebDriver + WebDriverManager
@@ -24,37 +24,37 @@
 
 ---
 
-### 📏 Правила разработки (Best Practices)
+### 📏 Best Practices
 
-1.  **DRY & Clean Code:** Все общие действия (клики, ожидания) инкапсулированы в `BasePage`.
-2.  **Explicit Waits:** Только динамические ожидания `WebDriverWait`. Никаких `Thread.sleep()`.
-3.  **Fluent Interface:** Реализация цепочек действий (Chain of Pages) для читаемости тестов.
-4.  **Git Flow:** Разработка функционала и тестов ведется в отдельных ветках.
+1.  DRY & Clean Code: All common actions (clicks, waits) are encapsulated in BasePage.
+2.  Explicit Waits: Only dynamic WebDriverWait is used. No Thread.sleep().
+3.  Fluent Interface: Implementation of action chains (Chain of Pages) for test readability.
+4.  Git Flow: Feature and test development is conducted in separate branches.
 
 ---
 
 ### 📂 Структура проекта
 
-* `src/main/java/core` — Ядро фреймворка (BasePage, конфигурации, слушатели).
-* `src/test/java/pages` — Page Object Repository (локаторы и бизнес-логика).
-* `src/test/java/tests` — Автоматизированные тест-кейсы.
+* `src/main/java/core`  - Framework core (BasePage, configurations, listeners).
+* `src/test/java/pages` - Page Object Repository (locators and business logic).
+* `src/test/java/tests` - Automated test cases.
 
 ---
 
-### 🚀 Инструкция по запуску
+🚀 Launch Instructions
 
-Для работы тестов необходимо сначала запустить локальную версию сайта, а затем проект с автотестами.
+To run the tests, you must first launch the local version of the website and then the automated testing project.
 
-#### Шаг 1: Запуск Frontend (Сайт разработчиков)
-1. **Склонировать репозиторий:** `git clone https://github.com/vkadi-budetak/blablabike.git`
-2. **Установить зависимости:** `npm install`
-3. **Запустить локально:** `npm run dev`
-4. **Открыть в браузере:** [http://localhost:3000](http://localhost:3000)
+Step 1: Launch Frontend (Developer Website)
+1. Clone the repository: git clone https://github.com/vkadi-budetak/blablabike.git
+2. Install dependencies: npm install
+3. Launch locally: npm run dev
+4. Open in browser: http://localhost:3000
 
 #### Шаг 2: Запуск QA Automation (Этот проект)
-1. **Склонировать репозиторий с тестами:** `git clone https://github.com/Ifbefine/BlaBlaBikeTests.git`
-2. **Настройка:** Убедитесь, что в файле `src/test/resources/config.properties` указан верный `baseUrl=http://localhost:3000`.
-3. **Запуск:** Откройте проект в IntelliJ IDEA и запустите тесты из папки `src/test/java/com/blablaBike/Tests/`.
-4. **Логи:** Все действия (клики, поиск элементов) отображаются в реальном времени в консоли (вкладка **Run**).
+1. Clone the test repository: git clone https://github.com/Ifbefine/BlaBlaBikeTests.git
+2. Configuration: Ensure that the correct baseUrl=http://localhost:3000 is specified in the src/test/resources/config.properties file.
+3. Launch: Open the project in IntelliJ IDEA and run the tests from the src/test/java/com/blablaBike/Tests/ folder.
+4. Logs: All actions (clicks, element searches) are displayed in real-time in the console (Run tab).
 
 

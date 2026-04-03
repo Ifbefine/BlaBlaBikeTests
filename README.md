@@ -33,7 +33,7 @@
 
 ---
 
-### 📂 Структура проекта
+### 📂 Project Structure
 
 * `src/main/java/core`  - Framework core (BasePage, configurations, listeners).
 * `src/test/java/pages` - Page Object Repository (locators and business logic).
